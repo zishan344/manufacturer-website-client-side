@@ -17,6 +17,7 @@ import ProductDetils from "./component/Pages/Home/ProductDetils";
 import Footer from "./component/Shared/Footer";
 import Navbar from "./component/Shared/Navbar";
 import NotFound from "./component/Shared/NotFound";
+import RequarAuth from "./component/Shared/RequarAuth";
 function App() {
   return (
     <div>
@@ -24,10 +25,24 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/productDetils/:id" element={<ProductDetils />}></Route>
+        <Route
+          path="/productDetils/:id"
+          element={
+            <RequarAuth>
+              <ProductDetils />
+            </RequarAuth>
+          }
+        ></Route>
 
         <Route path="/blog" element={<Blog />}></Route>
-        <Route path="/dashboard" element={<DashBoard />}>
+        <Route
+          path="/dashboard"
+          element={
+            <RequarAuth>
+              <DashBoard />
+            </RequarAuth>
+          }
+        >
           <Route index element={<MyProfile />} />
           <Route path="/dashboard/myOrder" element={<MyOrder />} />
           <Route path="/dashboard/addReview" element={<AddReview />} />

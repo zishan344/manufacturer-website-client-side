@@ -1,16 +1,20 @@
 import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
+  useSendPasswordResetEmail,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading";
 
 const Register = () => {
   const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, Ruser, Rloading, Rerror] =
     useCreateUserWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
   const {
     register,
     formState: { errors },
@@ -26,6 +30,9 @@ const Register = () => {
     mrError = (
       <p className="mt-3 text-red-500">{gerror?.message || Rerror?.message}</p>
     );
+  }
+  if (gloading || Rloading) {
+    return <Loading />;
   }
   const onSubmit = (data) => {
     const { email, password } = data;
@@ -111,6 +118,7 @@ const Register = () => {
                   </span>
                 )}
               </label>
+
               <span className="">
                 Already have an account{" "}
                 <Link className="underline text-blue-500" to="/login">

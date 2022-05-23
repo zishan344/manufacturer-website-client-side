@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading";
 
 const Login = () => {
   const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, Luser, Lloading, Lerror] =
     useSignInWithEmailAndPassword(auth);
+  const [email, setEmail] = useState("");
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   if (guser || Luser) {
-    navigate("/home");
+    navigate(from, { replace: true });
   }
   console.log(Luser);
   let mrError;
@@ -27,12 +36,15 @@ const Login = () => {
       <p className="mt-3 text-red-500">{gerror?.message || Lerror?.message}</p>
     );
   }
+
   const onSubmit = (data) => {
     const { email, password } = data;
     signInWithEmailAndPassword(email, password);
     console.log(data);
   };
-
+  if (gloading || Lloading) {
+    return <Loading />;
+  }
   return (
     <div class="flex justify-center py-4 bg-base-200">
       <div class="card w-full max-w-sm shadow-2xl bg-base-100">
@@ -55,7 +67,8 @@ const Login = () => {
                   },
                 })}
                 type="email"
-                placeholder="Type here"
+                onBlur={(e) => setEmail(e.target.value)}
+                placeholder="Email"
                 class="input input-bordered w-full max-w-xs"
               />
               <label class="label">
@@ -79,7 +92,7 @@ const Login = () => {
                   },
                 })}
                 type="password"
-                placeholder="Type here"
+                placeholder="Password"
                 class="input input-bordered w-full max-w-xs"
               />
               <label class="label">
@@ -88,6 +101,18 @@ const Login = () => {
                     {errors.password.message}
                   </span>
                 )}
+                <span
+                  onClick={async () => {
+                    if (!email) {
+                      return toast.error("input a valid email");
+                    }
+                    await sendPasswordResetEmail(email);
+                    toast.success("send email successfully");
+                  }}
+                  class="label-text-alt text-blue-500 link link-hover"
+                >
+                  Forgot password?
+                </span>
               </label>
               <span className="">
                 New to autovantis{" "}
@@ -96,7 +121,7 @@ const Login = () => {
                 </Link>
               </span>
             </div>
-
+            {mrError}
             <div class="form-control mt-6  ">
               <button type="submit" class="btn btn-primary">
                 Login
