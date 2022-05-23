@@ -24,7 +24,7 @@ const Reviews = () => {
     },
   ];
   return (
-    <div className="my-12">
+    <div className="my-12 container mx-auto">
       <div className="text-center">
         <h2 className="text-[#86B6F4] text-xl font-bold my-12 inline-block bg-[#E7F1FD] px-2 py-1 rounded-full">
           Testimonial Review
