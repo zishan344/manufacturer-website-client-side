@@ -13,15 +13,6 @@ const RequarAuth = ({ children }) => {
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-  //   if (!user) {
-  //     return <Navigate to="/login" state={{ from: location }} replace />;
-  //   }
-  //   return children;
-  //   const [user, loading] = useAuthState(auth);
-  //   const location = useLocation();
-  //   if (loading) {
-  //     return <Loading />;
-  //   }
   return children;
 };
 

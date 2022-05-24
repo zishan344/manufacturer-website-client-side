@@ -1,15 +1,51 @@
 import { signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading";
 import "./productDetils.css";
 
 const ProductDetils = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
+  const [user, loading, Uerror] = useAuthState(auth);
+  // const [product, setProduct] = useState({});
+  const [inputvalu, setInputvalu] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
+  const {
+    data: product,
+    isLoading,
+    refetch,
+  } = useQuery("product", () =>
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/login");
+      }
+      return res.json();
+    })
+  );
+  if (isLoading) {
+    return <Loading />;
+  }
+  const {
+    _id,
+    image,
+    description,
+    name,
+    price,
+    minimum_order,
+    product_quantity,
+  } = product;
+  /*  useEffect(() => {
     fetch(`http://localhost:5000/product/${id}`, {
       method: "GET",
       headers: {
@@ -25,18 +61,59 @@ const ProductDetils = () => {
         return res.json();
       })
       .then((data) => setProduct(data));
-  }, []);
-  const {
-    _id,
-    image,
-    description,
-    name,
-    price,
-    minimum_order,
-    product_quantity,
-  } = product;
-  const [inputvalu, setInputvalu] = useState(100);
+  }, [id]); */
 
+  const addedCart = () => {
+    const confirm = window.confirm("are sure addde this product");
+    if (!confirm) {
+      return;
+    }
+    if (Number(product_quantity) < Number(inputvalu)) {
+      return toast.error("product not available");
+    }
+    const totalProduct = Number(product_quantity) - Number(inputvalu);
+    const updateBody = {
+      image,
+      description,
+      name,
+      price,
+      minimum_order,
+      product_quantity: totalProduct,
+    };
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(updateBody),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        refetch();
+        console.log(result);
+      });
+    const booking = {
+      productId: _id,
+      image,
+      name,
+      price,
+      email: user?.email,
+      quantity: inputvalu,
+    };
+
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json)
+      .then((data) => {
+        toast.success("product added successfully check the order");
+        console.log(data);
+      });
+  };
   const up = (e) => {
     const quantity = Number(inputvalu) + 1;
     if (quantity > Number(product_quantity)) {
@@ -92,7 +169,7 @@ const ProductDetils = () => {
                 max={product_quantity}
                 id="quantity"
                 title="Quantity"
-                value={inputvalu}
+                defaultValue={minimum_order}
               />
               <button
                 onClick={up}
@@ -107,7 +184,9 @@ const ProductDetils = () => {
                 -
               </button>
             </div>
-            <button class="btn btn-bordered">Add to Cart</button>
+            <button onClick={addedCart} class="btn btn-bordered">
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
