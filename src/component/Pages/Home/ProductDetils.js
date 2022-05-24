@@ -1,10 +1,14 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
 import "./productDetils.css";
+
 const ProductDetils = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:5000/product/${id}`, {
       method: "GET",
@@ -12,7 +16,14 @@ const ProductDetils = () => {
         authorization: `Berar ${localStorage.getItem("accessToken")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
+        return res.json();
+      })
       .then((data) => setProduct(data));
   }, []);
   const {
@@ -55,6 +66,12 @@ const ProductDetils = () => {
           <h2 class="text-5xl font-bold">{name}</h2>
           <h2 className="text-3xl font-bold my-4">
             Price: $<span className="text-xxl">{price}</span>{" "}
+          </h2>
+          <h2 className="font-medium text-slate-600 font-bold">
+            Available product {product_quantity}{" "}
+          </h2>
+          <h2 className="font-bold font-medium text-slate-600">
+            Minimum order {minimum_order}{" "}
           </h2>
           <p class=" my-10">{description}</p>
           <div class="action-top d-sm-flex">
