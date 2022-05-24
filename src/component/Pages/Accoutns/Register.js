@@ -7,6 +7,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import useToken from "../../hooks/useToken";
 import Loading from "../../Shared/Loading";
 
 const Register = () => {
@@ -20,8 +21,9 @@ const Register = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [token] = useToken(guser || Ruser);
   const navigate = useNavigate();
-  if (guser || Ruser) {
+  if (token) {
     console.log(Ruser);
     navigate("/home");
   }
@@ -37,7 +39,6 @@ const Register = () => {
   const onSubmit = (data) => {
     const { email, password } = data;
     createUserWithEmailAndPassword(email, password);
-    console.log(data);
   };
   return (
     <div class="flex justify-center py-4 bg-base-200">

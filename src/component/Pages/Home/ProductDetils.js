@@ -6,7 +6,12 @@ const ProductDetils = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: "GET",
+      headers: {
+        authorization: `Berar ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);

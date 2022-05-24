@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import useToken from "../../hooks/useToken";
 import Loading from "../../Shared/Loading";
 
 const Login = () => {
@@ -17,7 +18,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [sendPasswordResetEmail, sending, error] =
     useSendPasswordResetEmail(auth);
-
+  const [token] = useToken(guser || Luser);
   const {
     register,
     formState: { errors },
@@ -26,10 +27,11 @@ const Login = () => {
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
-  if (guser || Luser) {
-    navigate(from, { replace: true });
-  }
-  console.log(Luser);
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
   let mrError;
   if (gerror || Lerror) {
     mrError = (
@@ -40,7 +42,6 @@ const Login = () => {
   const onSubmit = (data) => {
     const { email, password } = data;
     signInWithEmailAndPassword(email, password);
-    console.log(data);
   };
   if (gloading || Lloading) {
     return <Loading />;
