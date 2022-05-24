@@ -13,6 +13,7 @@ import Login from "./component/Pages/Accoutns/Login";
 import Register from "./component/Pages/Accoutns/Register";
 import Blog from "./component/Pages/Blogs/Blog";
 import Home from "./component/Pages/Home/Home";
+import MoreServices from "./component/Pages/Home/MoreServices";
 import ProductDetils from "./component/Pages/Home/ProductDetils";
 import Footer from "./component/Shared/Footer";
 import Navbar from "./component/Shared/Navbar";
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
+        <Route path="/allProduct" element={<MoreServices />}></Route>
         <Route
           path="/productDetils/:id"
           element={

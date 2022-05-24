@@ -9,18 +9,21 @@ const Reviews = () => {
       name: "john",
       review:
         "Ea laborum ullamco cillum nisi anim in pariatur. Proident amet velit velit ullamco reprehenderit dolor magna duis enim et magna officia culpa adipisicing. Veniam voluptate occaecat eu magna anim tempor eiusmod cillum commodo mollit id nulla. Velit id dolor Lorem aliquip anim veniam do quis nostrud ad ea",
+      rating: 4.5,
     },
     {
       profile: "https://i.ibb.co/JHdYrvJ/human.jpg",
       name: "Rhon bon",
       review:
         "Ea laborum ullamco cillum nisi anim in pariatur. Proident amet velit velit ullamco reprehenderit dolor magna duis enim et magna officia culpa adipisicing. Veniam voluptate occaecat eu magna anim tempor eiusmod cillum commodo mollit id nulla. Velit id dolor Lorem aliquip anim veniam do quis nostrud ad ea",
+      rating: 5,
     },
     {
       profile: "https://i.ibb.co/tbY24vY/human-2.jpg",
       name: "smith sara",
       review:
         "Ea laborum ullamco cillum nisi anim in pariatur. Proident amet velit velit ullamco reprehenderit dolor magna duis enim et magna officia culpa adipisicing. Veniam voluptate occaecat eu magna anim tempor eiusmod cillum commodo mollit id nulla. Velit id dolor Lorem aliquip anim veniam do quis nostrud ad ea",
+      rating: 3.5,
     },
   ];
   return (

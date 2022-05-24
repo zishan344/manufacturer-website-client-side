@@ -1,7 +1,8 @@
 import React from "react";
-
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import Rating from "react-rating";
 const Review = ({ review }) => {
-  const { profile, name, review: reviews } = review;
+  const { profile, name, review: reviews, rating } = review;
   return (
     <div className="card max-w-lg bg-base-100 shadow-xl ">
       <div class="avatar flex justify-center mt-4">
@@ -15,8 +16,15 @@ const Review = ({ review }) => {
           {reviews.slice(0, 100)}
           {reviews.length > 100 && <span title={`${reviews}`}>...</span>}
         </p>
-        <h2 className="text-left w-full font-bold  ">
-          Rating: <span className="text-orange-300"> 4.5</span>
+        <h2 className="text-left w-full">
+          <Rating
+            initialRating={rating}
+            emptySymbol={<AiOutlineStar className="text-xl" />}
+            fullSymbol={
+              <AiFillStar className="text-xl" style={{ color: "goldenrod" }} />
+            }
+            readonly
+          ></Rating>
         </h2>
       </div>
     </div>
