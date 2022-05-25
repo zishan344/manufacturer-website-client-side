@@ -6,13 +6,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
-import "./productDetils.css";
 
 const ProductDetils = () => {
   const { id } = useParams();
   const [user, loading, Uerror] = useAuthState(auth);
   // const [product, setProduct] = useState({});
-  const [inputvalu, setInputvalu] = useState(100);
+  const [inputValue, setInputvalu] = useState(0);
   const navigate = useNavigate();
   const {
     data: product,
@@ -33,6 +32,7 @@ const ProductDetils = () => {
       return res.json();
     })
   );
+
   if (isLoading) {
     return <Loading />;
   }
@@ -45,9 +45,13 @@ const ProductDetils = () => {
     minimum_order,
     product_quantity,
   } = product;
-  const addedCart = (e) => {
+  const formSubmit = (e) => {
     e.preventDefault();
-    const productQuantity = e.target.number.value;
+    const userName = e.target.name.value;
+    const email = e.target.email.value;
+    const shipignAddress = e.target.description.value;
+    const number = e.target.number.value;
+    const productQuantity = e.target.quantity.value;
     console.log(productQuantity);
     if (productQuantity == 0) {
       return toast.error(`sorry minimum order ${minimum_order}`);
@@ -84,10 +88,13 @@ const ProductDetils = () => {
       });
     const booking = {
       productId: _id,
+      userName,
+      product_name: name,
+      email,
       image,
-      name,
+      shipignAddress,
+      number,
       price,
-      email: user?.email,
       quantity: productQuantity,
       totalPrice: total,
     };
@@ -105,85 +112,124 @@ const ProductDetils = () => {
         console.log(data);
       });
   };
-  const up = () => {
-    const quantity = Number(inputvalu) + 1;
-    if (quantity > Number(product_quantity)) {
-      return toast.error(`sorry product not available`);
-    }
-    setInputvalu(quantity);
-  };
-  const down = () => {
-    const downQuantity = Number(inputvalu) - 1;
-    if (downQuantity < Number(minimum_order)) {
-      return toast.error(`sorry minimum order ${minimum_order}`);
-    }
-    setInputvalu(downQuantity);
-  };
 
   return (
-    <div class="hero min-h-screen bg-base-100 container mx-auto">
-      <div class="hero-cont flex-col lg:flex-row gap-8">
-        <div className="flex-1 flex justify-center  border-2 border-slate-300 p-12">
-          <img
-            src={image}
-            className="max-w-sm lg:max-w-lg rounded-lg shadow-2xl"
-            alt="car parts"
-          />
+    <div class="bg-base-100 container mx-auto">
+      <div class="hero-content flex-col lg:flex-row gap-8">
+        <div className="flex-1 flex flex-col justify-center border-2 border-slate-300 p-5">
+          <div>
+            <img
+              src={image}
+              className=" flex w-full rounded-lg"
+              alt="car parts"
+            />
+          </div>
+          <div>
+            <span class="font-semibold">{name}. </span>
+
+            <span>
+              Price: $<span className="font-semibold">{price}.</span>{" "}
+            </span>
+            <span className="text-slate-600">
+              Available Product:{" "}
+              <span className="font-semibold">{product_quantity}pcs.</span>{" "}
+            </span>
+            <span className=" text-slate-600">
+              Minimum Order:{" "}
+              <span className="font-semibold">{minimum_order}pcs.</span>{" "}
+            </span>
+            <h3 className="text-2xl my-6 font-bold font-medium">
+              Product Description:
+            </h3>
+            <p class=" mt-2 mb-4">{description}</p>
+          </div>
         </div>
         <div className="flex-1">
-          <h2 class="text-5xl font-bold">{name}</h2>
-          <h2 className="text-3xl font-bold my-4">
-            Price: $<span className="text-xxl">{price}</span>{" "}
-          </h2>
-          <h2 className="font-medium text-slate-600 font-bold">
-            Available product {product_quantity}{" "}
-          </h2>
-          <h2 className="font-bold font-medium text-slate-600">
-            Minimum order {minimum_order}{" "}
-          </h2>
-          <p class=" my-10">{description}</p>
-          <form onSubmit={addedCart}>
-            <div class="action-top d-sm-flex">
-              <div class="pro-qty mr-3 mb-4 mb-sm-0">
-                <label for="quantity" class="sr-only">
-                  Quantity
-                </label>
-                <input
-                  onChange={(e) => {
-                    if (Number(e.target.value) > Number(product_quantity)) {
-                      return toast.error("sorry product not available");
-                    } else {
-                      return setInputvalu(e.target.value);
-                    }
-                  }}
-                  name="number"
-                  type="number"
-                  min={minimum_order}
-                  max={product_quantity}
-                  id="quantity"
-                  title="Quantity"
-                  Value={inputvalu}
-                />
-                <button
-                  onClick={up}
-                  type="button"
-                  class="inc qty-btn bts flex justify-center items-center"
-                >
-                  +
-                </button>
-                <button
-                  onClick={down}
-                  type="button"
-                  class="dec qty-btn bts flex justify-center items-center"
-                >
-                  -
-                </button>
+          <div class="flex justify-center py-4 bg-base-100">
+            <div class="card w-full max-w-lg  bg-base-100">
+              <div class="card-body">
+                <h2 className="text-2xl font-bold text-secondary">
+                  Add A Review
+                </h2>
+                <form onSubmit={formSubmit}>
+                  <div class="form-control w-full max-w-lg">
+                    <label class="label">
+                      <span class="label-text">Name</span>
+                    </label>
+                    <input
+                      name="name"
+                      type="text"
+                      readOnly
+                      value={user?.displayName}
+                      placeholder="User Name"
+                      class="input input-bordered w-full max-w-lg"
+                    />
+                  </div>
+                  <div class="form-control w-full max-w-lg">
+                    <label class="label">
+                      <span class="label-text">Email</span>
+                    </label>
+                    <input
+                      name="email"
+                      type="text"
+                      disabled
+                      readOnly
+                      value={user?.email}
+                      placeholder="Email"
+                      class="input input-bordered w-full max-w-lg"
+                    />
+                  </div>
+
+                  <label class="label mt-3">
+                    <span class="label-text">Shipping Address</span>
+                  </label>
+                  <textarea
+                    name="description"
+                    class="w-full max-w-lg textarea textarea-bordered"
+                    placeholder="Shipping Address"
+                  ></textarea>
+
+                  <div class="form-control w-full max-w-lg">
+                    <label class="label">
+                      <span class="label-text">Phone number</span>
+                    </label>
+                    <input
+                      name="number"
+                      type="Number"
+                      placeholder="Number"
+                      class="input input-bordered w-full max-w-lg"
+                    />
+                  </div>
+                  <div class="form-control w-full max-w-lg">
+                    <label class="label">
+                      <span class="label-text">Quantity</span>
+                    </label>
+                    <input
+                      name="quantity"
+                      onChange={(e) => {
+                        if (Number(e.target.value) > Number(product_quantity)) {
+                          return toast.error("sorry product not available");
+                        } else {
+                          return setInputvalu(e.target.value);
+                        }
+                      }}
+                      class="input input-bordered w-full max-w-lg"
+                      type="number"
+                      id="quantity"
+                      title="Quantity"
+                      value={inputValue || minimum_order}
+                    />
+                  </div>
+
+                  <div class="form-control mt-6  ">
+                    <button type="submit" class="btn btn-primary">
+                      Book now
+                    </button>
+                  </div>
+                </form>
               </div>
-              <button type="submit" class="btn btn-bordered btn-primary">
-                Add to Cart
-              </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

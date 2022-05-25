@@ -55,7 +55,7 @@ const Register = () => {
       <div class="card w-full max-w-sm shadow-2xl bg-base-100">
         <div class="card-body">
           <h2 className="text-2xl font-bold text-secondary">
-            Please Register An Account
+            Register An Account
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div class="form-control w-full max-w-xs">
@@ -134,7 +134,7 @@ const Register = () => {
               <span className="">
                 Already have an account{" "}
                 <Link className="underline text-blue-500" to="/login">
-                  Please Login
+                  Login
                 </Link>
               </span>
               {mrError}

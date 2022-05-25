@@ -5,6 +5,7 @@ import auth from "../../firebase.init";
 
 const AddReview = () => {
   const [user] = useAuthState(auth);
+  console.log(user.displayName);
   const {
     register,
     formState: { errors },
@@ -98,7 +99,7 @@ const AddReview = () => {
 
             <div class="form-control mt-6  ">
               <button type="submit" class="btn btn-primary">
-                Add Review
+                send feedback
               </button>
             </div>
           </form>

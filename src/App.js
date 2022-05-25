@@ -9,6 +9,7 @@ import ManageOrder from "./component/DashBoard/ManageOrder";
 import ManageProducts from "./component/DashBoard/ManageProducts";
 import MyOrder from "./component/DashBoard/MyOrder";
 import MyProfile from "./component/DashBoard/MyProfile";
+import Payment from "./component/DashBoard/Payment";
 import Login from "./component/Pages/Accoutns/Login";
 import Register from "./component/Pages/Accoutns/Register";
 import Blog from "./component/Pages/Blogs/Blog";
@@ -90,6 +91,14 @@ function App() {
               <RequireAdmin>
                 <ManageProducts />
               </RequireAdmin>
+            }
+          />
+          <Route
+            path="/dashboard/payment/:id"
+            element={
+              <RequarAuth>
+                <Payment />
+              </RequarAuth>
             }
           />
         </Route>

@@ -1,7 +1,9 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const MyOrderRow = ({ order, index, refetch }) => {
   const { _id } = order;
+  const navigate = useNavigate();
   const deleteItem = () => {
     const confirm = window.confirm("are you sure delete this item");
     if (!confirm) {
@@ -19,7 +21,9 @@ const MyOrderRow = ({ order, index, refetch }) => {
         console.log(result);
       });
   };
-
+  //   const payment = (id) => {
+  //     navigate(`/dashboard/payment/${id}`);
+  //   };
   return (
     <tr>
       <th>
@@ -44,7 +48,9 @@ const MyOrderRow = ({ order, index, refetch }) => {
         <button onClick={deleteItem} class="btn btn-error btn-xs mr-4">
           delete
         </button>
-        <button class="btn btn-xs btn-primary">pay</button>
+        <Link to={`/dashboard/payment/${order._id}`}>
+          <button className="btn btn-xs btn-primary">pay</button>
+        </Link>
       </th>
     </tr>
   );
