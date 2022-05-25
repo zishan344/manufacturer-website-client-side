@@ -1,7 +1,12 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Outlet } from "react-router-dom";
-
+import auth from "../../firebase.init";
+import useAdmin from "../hooks/useAdmin";
 const DashBoard = () => {
+  const [user, loading, error] = useAuthState(auth);
+
+  const [admin] = useAdmin(user);
   return (
     <div class="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -16,24 +21,35 @@ const DashBoard = () => {
           <li>
             <NavLink to="/dashboard">My Profile</NavLink>
           </li>
-          <li>
-            <NavLink to="/dashboard/myOrder">My Order</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/addReview">Add Review</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/manageAllOrder">Manage All Order</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/addProduct">Add Product</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/makeAdmin">Make Admin</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/manageProduct">Manage Product</NavLink>
-          </li>
+          {!admin && (
+            <>
+              <li>
+                <NavLink to="/dashboard/myOrder">My Order</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addReview">Add Review</NavLink>
+              </li>
+            </>
+          )}
+
+          {admin && (
+            <>
+              <li>
+                <NavLink to="/dashboard/manageAllOrder">
+                  Manage All Order
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addProduct">Add Product</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/makeAdmin">Make Admin</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageProduct">Manage Product</NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>

@@ -25,7 +25,6 @@ const Register = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  console.log(displayName);
   const [token] = useToken(guser || Ruser);
   console.log(Ruser);
   const navigate = useNavigate();
