@@ -11,9 +11,14 @@ const Navbar = () => {
   const menuItem = (
     <>
       {user && (
-        <li className="mr-2">
-          <NavLink to="/dashboard">DashBoard</NavLink>
-        </li>
+        <>
+          <li className="mr-2">
+            <NavLink to="/dashboard">DashBoard</NavLink>
+          </li>
+          <li className="mr-2">
+            <NavLink to="/portfolio">Portfolio</NavLink>
+          </li>
+        </>
       )}
       <li className="mr-2">
         <NavLink to="/blog">Blog</NavLink>

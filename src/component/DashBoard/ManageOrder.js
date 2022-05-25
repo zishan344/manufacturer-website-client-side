@@ -43,7 +43,7 @@ const ManageOrder = () => {
             <th>price</th>
             <th>quantity</th>
             <th>Total</th>
-            <th className="text-center">Product Id</th>
+            <th className="text-center">Email</th>
             <th className="text-center">Action</th>
           </tr>
         </thead>

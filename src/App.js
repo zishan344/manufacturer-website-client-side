@@ -16,6 +16,7 @@ import AllReviews from "./component/Pages/Home/AllReviews";
 import Home from "./component/Pages/Home/Home";
 import MoreServices from "./component/Pages/Home/MoreServices";
 import ProductDetils from "./component/Pages/Home/ProductDetils";
+import Portfolio from "./component/Pages/PortFolio/Portfolio";
 import Footer from "./component/Shared/Footer";
 import Navbar from "./component/Shared/Navbar";
 import NotFound from "./component/Shared/NotFound";
@@ -29,6 +30,14 @@ function App() {
         <Route path="/home" element={<Home />}></Route>
         <Route path="/allProduct" element={<MoreServices />}></Route>
         <Route path="/allReviews" element={<AllReviews />}></Route>
+        <Route
+          path="/portfolio"
+          element={
+            <RequarAuth>
+              <Portfolio />
+            </RequarAuth>
+          }
+        ></Route>
         <Route
           path="/productDetils/:id"
           element={

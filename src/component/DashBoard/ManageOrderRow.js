@@ -21,7 +21,7 @@ const ManageOrderRow = ({ order, index }) => {
       <td>${order.price}</td>
       <td>{order.quantity}</td>
       <th>${order.totalPrice}</th>
-      <th className="text-center">{order.productId}</th>
+      <th className="text-center">{order.email}</th>
 
       <th className="text-center">
         <button class="btn btn-error btn-xs mr-4">pending</button>

@@ -8,7 +8,7 @@ const Review = ({ review }) => {
     .map((name) => name[0])
     .join("")
     .toUpperCase();
-  console.log(fullName);
+
   return (
     <div className="card max-w-lg bg-base-100 shadow-xl ">
       {review?.image ? (
