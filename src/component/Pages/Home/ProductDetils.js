@@ -12,7 +12,7 @@ const ProductDetils = () => {
   const { id } = useParams();
   const [user, loading, Uerror] = useAuthState(auth);
   // const [product, setProduct] = useState({});
-  const [inputvalu, setInputvalu] = useState("");
+  const [inputvalu, setInputvalu] = useState(100);
   const navigate = useNavigate();
   const {
     data: product,
@@ -45,33 +45,23 @@ const ProductDetils = () => {
     minimum_order,
     product_quantity,
   } = product;
-  /*  useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`, {
-      method: "GET",
-      headers: {
-        authorization: `Berar ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => {
-        if (res.status === 401 || res.status === 403) {
-          signOut(auth);
-          localStorage.removeItem("accessToken");
-          navigate("/login");
-        }
-        return res.json();
-      })
-      .then((data) => setProduct(data));
-  }, [id]); */
-
-  const addedCart = () => {
+  const addedCart = (e) => {
+    e.preventDefault();
+    const productQuantity = e.target.number.value;
+    console.log(productQuantity);
+    if (productQuantity == 0) {
+      return toast.error(`sorry minimum order ${minimum_order}`);
+    }
+    if (Number(product_quantity) < Number(productQuantity)) {
+      return toast.error("product not available");
+    }
     const confirm = window.confirm("are sure addde this product");
     if (!confirm) {
       return;
     }
-    if (Number(product_quantity) < Number(inputvalu)) {
-      return toast.error("product not available");
-    }
-    const totalProduct = Number(product_quantity) - Number(inputvalu);
+    const totalProduct = Number(product_quantity) - Number(productQuantity);
+    const total = Number(productQuantity) * Number(price);
+    console.log(total);
     const updateBody = {
       image,
       description,
@@ -98,7 +88,8 @@ const ProductDetils = () => {
       name,
       price,
       email: user?.email,
-      quantity: inputvalu,
+      quantity: productQuantity,
+      totalPrice: total,
     };
 
     fetch("http://localhost:5000/booking", {
@@ -114,7 +105,7 @@ const ProductDetils = () => {
         console.log(data);
       });
   };
-  const up = (e) => {
+  const up = () => {
     const quantity = Number(inputvalu) + 1;
     if (quantity > Number(product_quantity)) {
       return toast.error(`sorry product not available`);
@@ -151,43 +142,48 @@ const ProductDetils = () => {
             Minimum order {minimum_order}{" "}
           </h2>
           <p class=" my-10">{description}</p>
-          <div class="action-top d-sm-flex">
-            <div class="pro-qty mr-3 mb-4 mb-sm-0">
-              <label for="quantity" class="sr-only">
-                Quantity
-              </label>
-              <input
-                onChange={(e) => {
-                  if (Number(e.target.value) > Number(product_quantity)) {
-                    return toast.error("sorry product not available");
-                  } else {
-                    return setInputvalu(e.target.value);
-                  }
-                }}
-                type="number"
-                min={minimum_order}
-                max={product_quantity}
-                id="quantity"
-                title="Quantity"
-                defaultValue={minimum_order}
-              />
-              <button
-                onClick={up}
-                class="inc qty-btn bts flex justify-center items-center"
-              >
-                +
-              </button>
-              <button
-                onClick={down}
-                class="dec qty-btn bts flex justify-center items-center"
-              >
-                -
+          <form onSubmit={addedCart}>
+            <div class="action-top d-sm-flex">
+              <div class="pro-qty mr-3 mb-4 mb-sm-0">
+                <label for="quantity" class="sr-only">
+                  Quantity
+                </label>
+                <input
+                  onChange={(e) => {
+                    if (Number(e.target.value) > Number(product_quantity)) {
+                      return toast.error("sorry product not available");
+                    } else {
+                      return setInputvalu(e.target.value);
+                    }
+                  }}
+                  name="number"
+                  type="number"
+                  min={minimum_order}
+                  max={product_quantity}
+                  id="quantity"
+                  title="Quantity"
+                  Value={inputvalu}
+                />
+                <button
+                  onClick={up}
+                  type="button"
+                  class="inc qty-btn bts flex justify-center items-center"
+                >
+                  +
+                </button>
+                <button
+                  onClick={down}
+                  type="button"
+                  class="dec qty-btn bts flex justify-center items-center"
+                >
+                  -
+                </button>
+              </div>
+              <button type="submit" class="btn btn-bordered">
+                Add to Cart
               </button>
             </div>
-            <button onClick={addedCart} class="btn btn-bordered">
-              Add to Cart
-            </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
