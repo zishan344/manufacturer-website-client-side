@@ -179,7 +179,7 @@ const ProductDetils = () => {
                   -
                 </button>
               </div>
-              <button type="submit" class="btn btn-bordered">
+              <button type="submit" class="btn btn-bordered btn-primary">
                 Add to Cart
               </button>
             </div>

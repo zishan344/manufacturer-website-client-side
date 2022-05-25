@@ -12,6 +12,7 @@ import MyProfile from "./component/DashBoard/MyProfile";
 import Login from "./component/Pages/Accoutns/Login";
 import Register from "./component/Pages/Accoutns/Register";
 import Blog from "./component/Pages/Blogs/Blog";
+import AllReviews from "./component/Pages/Home/AllReviews";
 import Home from "./component/Pages/Home/Home";
 import MoreServices from "./component/Pages/Home/MoreServices";
 import ProductDetils from "./component/Pages/Home/ProductDetils";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/allProduct" element={<MoreServices />}></Route>
+        <Route path="/allReviews" element={<AllReviews />}></Route>
         <Route
           path="/productDetils/:id"
           element={

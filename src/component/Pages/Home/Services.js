@@ -25,7 +25,7 @@ const Services = () => {
       <div className="text-center my-10">
         <button
           onClick={() => navigate("/allProduct")}
-          className="btn btn-outline btn-success"
+          className="btn btn-outline btn-secondary"
         >
           Explore More
         </button>

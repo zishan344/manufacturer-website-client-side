@@ -50,7 +50,7 @@ const Login = () => {
     <div class="flex justify-center py-4 bg-base-200">
       <div class="card w-full max-w-sm shadow-2xl bg-base-100">
         <div class="card-body">
-          <h2 className="text-2xl font-bold text-primary">Please Login</h2>
+          <h2 className="text-2xl font-bold text-secondary">Please Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div class="form-control w-full max-w-xs">
               <label class="label">
@@ -134,7 +134,7 @@ const Login = () => {
         <div className="text-center px-6 mb-4">
           <button
             onClick={() => signInWithGoogle()}
-            class="btn w-full btn-outline btn-primary"
+            class="btn w-full btn-outline btn-secondary"
           >
             continue with google
           </button>

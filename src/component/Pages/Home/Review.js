@@ -24,8 +24,7 @@ const Review = ({ review }) => {
             class="w-24 rounded-full ring ring-primary bg-primary ring-offset-base-100 ring-offset-2 justify-center items-center"
           >
             <span className="rounded-xl text-3xl font-bold text-secondary">
-              {" "}
-              MIZ{" "}
+              {fullName}
             </span>
           </div>
         </div>

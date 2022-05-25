@@ -35,7 +35,7 @@ const AddReview = () => {
     <div class="flex justify-center py-4 bg-base-100">
       <div class="card w-full max-w-lg shadow-2xl bg-base-100">
         <div class="card-body">
-          <h2 className="text-2xl font-bold text-primary">Add A Review</h2>
+          <h2 className="text-2xl font-bold text-secondary">Add A Review</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div class="form-control w-full max-w-lg">
               <label class="label">
@@ -80,13 +80,13 @@ const AddReview = () => {
                 {...register("rating", {
                   required: {
                     value: true,
-                    message: "minimum order is required",
+                    message: "rating order is required",
                   },
                 })}
                 type="Number"
                 min="1"
                 max="5"
-                placeholder="minimum order"
+                placeholder="Rating "
                 class="input input-bordered w-full max-w-lg"
               />
               <label class="label">

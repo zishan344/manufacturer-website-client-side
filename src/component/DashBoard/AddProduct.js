@@ -33,7 +33,9 @@ const AddProduct = () => {
     <div class="flex justify-center py-4 bg-base-100">
       <div class="card w-full max-w-lg shadow-2xl bg-base-100">
         <div class="card-body">
-          <h2 className="text-2xl font-bold text-primary">Add A New Product</h2>
+          <h2 className="text-2xl font-bold text-secondary">
+            Add A New Product
+          </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div class="form-control w-full max-w-lg">
               <label class="label">

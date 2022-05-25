@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useSendPasswordResetEmail,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,7 +12,10 @@ import useToken from "../../hooks/useToken";
 import Loading from "../../Shared/Loading";
 
 const Register = () => {
+  const [displayName, setDisplayName] = useState("");
   const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const [updateProfile, updating, Uerror] = useUpdateProfile(auth);
+
   const [createUserWithEmailAndPassword, Ruser, Rloading, Rerror] =
     useCreateUserWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, error] =
@@ -21,30 +25,37 @@ const Register = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  console.log(displayName);
   const [token] = useToken(guser || Ruser);
+  console.log(Ruser);
   const navigate = useNavigate();
   if (token) {
-    console.log(Ruser);
+    if (Ruser) {
+      console.log(Ruser);
+    }
     navigate("/home");
   }
   let mrError;
-  if (gerror || Rerror) {
+  if (gerror || Rerror || Uerror) {
     mrError = (
-      <p className="mt-3 text-red-500">{gerror?.message || Rerror?.message}</p>
+      <p className="mt-3 text-red-500">
+        {gerror?.message || Rerror?.message || Uerror.message}
+      </p>
     );
   }
-  if (gloading || Rloading) {
+  if (gloading || Rloading || Uerror) {
     return <Loading />;
   }
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { email, password } = data;
-    createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName });
   };
   return (
     <div class="flex justify-center py-4 bg-base-200">
       <div class="card w-full max-w-sm shadow-2xl bg-base-100">
         <div class="card-body">
-          <h2 className="text-2xl font-bold text-primary">
+          <h2 className="text-2xl font-bold text-secondary">
             Please Register An Account
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -60,6 +71,7 @@ const Register = () => {
                   },
                 })}
                 type="text"
+                onChange={(e) => setDisplayName(e.target.value)}
                 placeholder="Name"
                 class="input input-bordered w-full max-w-xs"
               />
@@ -140,7 +152,7 @@ const Register = () => {
         <div className="text-center px-6 mb-4">
           <button
             onClick={() => signInWithGoogle()}
-            class="btn w-full btn-outline btn-primary"
+            class="btn w-full btn-outline btn-secondary"
           >
             continue with google
           </button>
