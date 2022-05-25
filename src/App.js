@@ -21,6 +21,7 @@ import Footer from "./component/Shared/Footer";
 import Navbar from "./component/Shared/Navbar";
 import NotFound from "./component/Shared/NotFound";
 import RequarAuth from "./component/Shared/RequarAuth";
+import RequireAdmin from "./component/Shared/RequireAdmin";
 function App() {
   return (
     <div>
@@ -59,10 +60,38 @@ function App() {
           <Route index element={<MyProfile />} />
           <Route path="/dashboard/myOrder" element={<MyOrder />} />
           <Route path="/dashboard/addReview" element={<AddReview />} />
-          <Route path="/dashboard/manageAllOrder" element={<ManageOrder />} />
-          <Route path="/dashboard/addProduct" element={<AddProduct />} />
-          <Route path="/dashboard/makeAdmin" element={<MakeAdmin />} />
-          <Route path="/dashboard/manageProduct" element={<ManageProducts />} />
+          <Route
+            path="/dashboard/manageAllOrder"
+            element={
+              <RequireAdmin>
+                <ManageOrder />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="/dashboard/addProduct"
+            element={
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="/dashboard/makeAdmin"
+            element={
+              <RequireAdmin>
+                <MakeAdmin />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="/dashboard/manageProduct"
+            element={
+              <RequireAdmin>
+                <ManageProducts />
+              </RequireAdmin>
+            }
+          />
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
