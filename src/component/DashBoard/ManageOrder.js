@@ -33,7 +33,7 @@ const ManageOrder = () => {
     return <Loading />;
   }
   return (
-    <div class="overflow-x-auto w-full">
+    <div class="overflow-x-auto w-full ">
       <table class="table w-full">
         {/* <!-- head --> */}
         <thead>

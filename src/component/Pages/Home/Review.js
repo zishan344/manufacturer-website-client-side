@@ -2,19 +2,42 @@ import React from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import Rating from "react-rating";
 const Review = ({ review }) => {
-  const { profile, name, review: reviews, rating } = review;
+  const { image, user_name, description, rating } = review;
+  const fullName = review?.user_name
+    ?.split(" ")
+    .map((name) => name[0])
+    .join("")
+    .toUpperCase();
+  console.log(fullName);
   return (
     <div className="card max-w-lg bg-base-100 shadow-xl ">
-      <div class="avatar flex justify-center mt-4">
-        <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src={profile} alt="Shoes" className="rounded-xl" />
+      {review?.image ? (
+        <div class="avatar flex justify-center mt-4">
+          <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img src={image} alt="Shoes" className="rounded-xl" />
+          </div>
         </div>
-      </div>
+      ) : (
+        <div class="avatar flex justify-center mt-4">
+          <div
+            style={{ display: "flex" }}
+            class="w-24 rounded-full ring ring-primary bg-primary ring-offset-base-100 ring-offset-2 justify-center items-center"
+          >
+            <span className="rounded-xl text-3xl font-bold text-secondary">
+              {" "}
+              MIZ{" "}
+            </span>
+          </div>
+        </div>
+      )}
+
       <div className="card-body items-center text-center">
-        <h2 className="card-title">{name}</h2>
+        <h2 className="card-title">{user_name}</h2>
         <p>
-          {reviews.slice(0, 100)}
-          {reviews.length > 100 && <span title={`${reviews}`}>...</span>}
+          {description.slice(0, 100)}
+          {description.length > 100 && (
+            <span title={`${description}`}>...</span>
+          )}
         </p>
         <h2 className="text-left w-full">
           <Rating
