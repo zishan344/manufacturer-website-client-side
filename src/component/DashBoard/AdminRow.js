@@ -7,7 +7,7 @@ const AdminRow = ({ index, user, refetch }) => {
     if (!confirm) {
       return;
     }
-    fetch(`http://localhost:5000/users/admin/${email}`, {
+    fetch(`https://desolate-citadel-69075.herokuapp.com/users/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

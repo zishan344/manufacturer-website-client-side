@@ -12,13 +12,14 @@ const ProductDetils = () => {
   const [user, loading, Uerror] = useAuthState(auth);
   // const [product, setProduct] = useState({});
   const [inputValue, setInputvalu] = useState(0);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const {
     data: product,
     isLoading,
     refetch,
   } = useQuery(["product", id], () =>
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://desolate-citadel-69075.herokuapp.com/product/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -45,6 +46,19 @@ const ProductDetils = () => {
     minimum_order,
     product_quantity,
   } = product;
+  const handleOrderQty = (event) => {
+    setInputvalu(event.target.value);
+    const value = Number(event.target.value);
+    const orderQtyValue = Number(minimum_order);
+    const totalStock = Number(product_quantity);
+    if (value > totalStock) {
+      setError(`Your order quantity should be in ${totalStock}`);
+    } else if (value < orderQtyValue) {
+      setError(`Quantity must be greater than ${orderQtyValue}`);
+    } else {
+      setError("");
+    }
+  };
   const formSubmit = (e) => {
     e.preventDefault();
     const userName = e.target.name.value;
@@ -73,7 +87,7 @@ const ProductDetils = () => {
       minimum_order,
       product_quantity: totalProduct,
     };
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://desolate-citadel-69075.herokuapp.com/product/${id}`, {
       method: "PUT",
       headers: {
         "content-Type": "application/json",
@@ -97,7 +111,7 @@ const ProductDetils = () => {
       totalPrice: total,
     };
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://desolate-citadel-69075.herokuapp.com/booking", {
       method: "POST",
       headers: {
         "content-Type": "application/json",
@@ -206,9 +220,7 @@ const ProductDetils = () => {
                     </label>
                     <input
                       name="quantity"
-                      onChange={(e) => {
-                        return setInputvalu(e.target.value);
-                      }}
+                      onChange={handleOrderQty}
                       class="input input-bordered w-full max-w-lg"
                       type="number"
                       id="quantity"
@@ -216,17 +228,9 @@ const ProductDetils = () => {
                       value={inputValue || minimum_order}
                     />
                     <label class="label">
-                      {(Number(inputValue) < Number(minimum_order) && (
-                        <span class="label-text text-red-500">
-                          {" "}
-                          sorry minimum order {minimum_order}
-                        </span>
-                      )) ||
-                        (Number(inputValue) > Number(product_quantity) && (
-                          <span class="label-text text-red-500">
-                            sorry maximum order {product_quantity}
-                          </span>
-                        ))}
+                      {error && (
+                        <span class="label-text text-red-500"> {error}</span>
+                      )}
                     </label>
                   </div>
 

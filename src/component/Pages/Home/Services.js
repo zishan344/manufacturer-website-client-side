@@ -6,7 +6,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://desolate-citadel-69075.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);

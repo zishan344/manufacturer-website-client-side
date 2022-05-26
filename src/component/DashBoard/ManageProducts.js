@@ -15,7 +15,7 @@ const ManageProducts = () => {
     error,
     refetch,
   } = useQuery("order", () =>
-    fetch(`http://localhost:5000/products`, {
+    fetch(`https://desolate-citadel-69075.herokuapp.com/products`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

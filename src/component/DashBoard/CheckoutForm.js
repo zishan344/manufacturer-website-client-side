@@ -11,14 +11,17 @@ const CheckoutForm = ({ product }) => {
   const [processing, setProcessing] = useState(false);
   const { _id, userName, email, product_name, totalPrice } = product;
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ totalPrice }),
-    })
+    fetch(
+      "https://desolate-citadel-69075.herokuapp.com/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ totalPrice }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -67,7 +70,7 @@ const CheckoutForm = ({ product }) => {
         booking: _id,
         transactionId: paymentIntent?.id,
       };
-      fetch(`http://localhost:5000/booking/${_id}`, {
+      fetch(`https://desolate-citadel-69075.herokuapp.com/booking/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

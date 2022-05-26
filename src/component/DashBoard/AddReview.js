@@ -20,7 +20,7 @@ const AddReview = () => {
       rating,
       image: user?.photoURL,
     };
-    fetch("http://localhost:5000/review", {
+    fetch("https://desolate-citadel-69075.herokuapp.com/review", {
       method: "POST",
       headers: {
         "content-Type": "application/json",

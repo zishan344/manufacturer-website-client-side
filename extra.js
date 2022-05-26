@@ -1,4 +1,36 @@
 /* 
+{profile?.location && (
+            <h2>
+              Location:{" "}
+              <span className="text-secondary font-bold">{user?.email}</span>{" "}
+            </h2>
+          )}
+          {profile?.education && (
+            <h2>
+              Educations/Qualification:{" "}
+              <span className="text-secondary font-bold">{user?.email}</span>{" "}
+            </h2>
+          )}
+          {profile?.phone && (
+            <h2>
+              Phone:{" "}
+              <span className="text-secondary font-bold">{user?.email}</span>{" "}
+            </h2>
+          )}
+          {profile?.linkedin && (
+            <h2>
+              linkedin :{" "}
+              <span className="text-secondary font-bold">{user?.email}</span>{" "}
+            </h2>
+          )}
+
+
+
+
+
+
+
+
 inputvalu
  <div class="action-top d-sm-flex">
               <div class=" ">

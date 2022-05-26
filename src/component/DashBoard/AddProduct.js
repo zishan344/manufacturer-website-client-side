@@ -17,7 +17,7 @@ const AddProduct = () => {
       minimum_order: min_order,
       product_quantity: stock,
     };
-    fetch("http://localhost:5000/product", {
+    fetch("https://desolate-citadel-69075.herokuapp.com/product", {
       method: "POST",
       headers: {
         "content-Type": "application/json",

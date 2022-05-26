@@ -7,7 +7,7 @@ const ManageProductRow = ({ product, index, refetch }) => {
     if (!confirm) {
       return;
     }
-    fetch(`http://localhost:5000/product/${_id}`, {
+    fetch(`https://desolate-citadel-69075.herokuapp.com/product/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
