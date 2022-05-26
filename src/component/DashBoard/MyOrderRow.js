@@ -37,7 +37,7 @@ const MyOrderRow = ({ order, index, refetch }) => {
             </div>
           </div>
           <div>
-            <div class="font-bold">{order.name}</div>
+            <div class="font-bold">{order?.name || order?.product_name}</div>
           </div>
         </div>
       </td>
@@ -45,12 +45,31 @@ const MyOrderRow = ({ order, index, refetch }) => {
       <td>{order.quantity}</td>
       <th>${order.totalPrice}</th>
       <th>
-        <button onClick={deleteItem} class="btn btn-error btn-xs mr-4">
-          delete
-        </button>
+        {/* 
         <Link to={`/dashboard/payment/${order._id}`}>
           <button className="btn btn-xs btn-primary">pay</button>
-        </Link>
+        </Link> */}
+        {order.totalPrice && !order.paid && (
+          <>
+            <button onClick={deleteItem} class="btn btn-error btn-xs mr-4">
+              delete
+            </button>
+            <Link to={`/dashboard/payment/${order._id}`}>
+              <button className="btn btn-xs btn-success">pay</button>
+            </Link>
+          </>
+        )}
+        {order.totalPrice && order.paid && (
+          <div>
+            <p>
+              <span className="text-success">Paid</span>
+            </p>
+            <p>
+              Transaction id:{" "}
+              <span className="text-success">{order.transactionId}</span>
+            </p>
+          </div>
+        )}
       </th>
     </tr>
   );

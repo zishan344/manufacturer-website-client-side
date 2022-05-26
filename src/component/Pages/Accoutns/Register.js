@@ -29,9 +29,6 @@ const Register = () => {
   console.log(Ruser);
   const navigate = useNavigate();
   if (token) {
-    if (Ruser) {
-      console.log(Ruser);
-    }
     navigate("/home");
   }
   let mrError;

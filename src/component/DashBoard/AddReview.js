@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 
 const AddReview = () => {
   const [user] = useAuthState(auth);
-  console.log(user.displayName);
+
   const {
     register,
     formState: { errors },
@@ -29,7 +29,7 @@ const AddReview = () => {
     })
       .then((res) => res.json())
       .then((result) => console.log(result));
-    console.log(data);
+
     reset();
   };
   return (

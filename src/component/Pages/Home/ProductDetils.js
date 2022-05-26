@@ -17,7 +17,7 @@ const ProductDetils = () => {
     data: product,
     isLoading,
     refetch,
-  } = useQuery("product", () =>
+  } = useQuery(["product", id], () =>
     fetch(`http://localhost:5000/product/${id}`, {
       method: "GET",
       headers: {
@@ -52,7 +52,6 @@ const ProductDetils = () => {
     const shipignAddress = e.target.description.value;
     const number = e.target.number.value;
     const productQuantity = e.target.quantity.value;
-    console.log(productQuantity);
     if (productQuantity == 0) {
       return toast.error(`sorry minimum order ${minimum_order}`);
     }
@@ -65,7 +64,7 @@ const ProductDetils = () => {
     }
     const totalProduct = Number(product_quantity) - Number(productQuantity);
     const total = Number(productQuantity) * Number(price);
-    console.log(total);
+
     const updateBody = {
       image,
       description,
@@ -84,7 +83,6 @@ const ProductDetils = () => {
       .then((res) => res.json())
       .then((result) => {
         refetch();
-        console.log(result);
       });
     const booking = {
       productId: _id,
@@ -109,8 +107,8 @@ const ProductDetils = () => {
       .then((res) => res.json)
       .then((data) => {
         toast.success("product added successfully check the order");
-        console.log(data);
       });
+    e.target.reset();
   };
 
   return (
@@ -149,7 +147,7 @@ const ProductDetils = () => {
             <div class="card w-full max-w-lg  bg-base-100">
               <div class="card-body">
                 <h2 className="text-2xl font-bold text-secondary">
-                  Add A Review
+                  Purses Now
                 </h2>
                 <form onSubmit={formSubmit}>
                   <div class="form-control w-full max-w-lg">
@@ -185,6 +183,7 @@ const ProductDetils = () => {
                   </label>
                   <textarea
                     name="description"
+                    required
                     class="w-full max-w-lg textarea textarea-bordered"
                     placeholder="Shipping Address"
                   ></textarea>
@@ -194,6 +193,7 @@ const ProductDetils = () => {
                       <span class="label-text">Phone number</span>
                     </label>
                     <input
+                      required
                       name="number"
                       type="Number"
                       placeholder="Number"
@@ -207,11 +207,7 @@ const ProductDetils = () => {
                     <input
                       name="quantity"
                       onChange={(e) => {
-                        if (Number(e.target.value) > Number(product_quantity)) {
-                          return toast.error("sorry product not available");
-                        } else {
-                          return setInputvalu(e.target.value);
-                        }
+                        return setInputvalu(e.target.value);
                       }}
                       class="input input-bordered w-full max-w-lg"
                       type="number"
@@ -219,10 +215,30 @@ const ProductDetils = () => {
                       title="Quantity"
                       value={inputValue || minimum_order}
                     />
+                    <label class="label">
+                      {(Number(inputValue) < Number(minimum_order) && (
+                        <span class="label-text text-red-500">
+                          {" "}
+                          sorry minimum order {minimum_order}
+                        </span>
+                      )) ||
+                        (Number(inputValue) > Number(product_quantity) && (
+                          <span class="label-text text-red-500">
+                            sorry maximum order {product_quantity}
+                          </span>
+                        ))}
+                    </label>
                   </div>
 
                   <div class="form-control mt-6  ">
-                    <button type="submit" class="btn btn-primary">
+                    <button
+                      disabled={
+                        Number(inputValue) < Number(minimum_order) ||
+                        Number(inputValue) > Number(product_quantity)
+                      }
+                      type="submit"
+                      class="btn btn-primary"
+                    >
                       Book now
                     </button>
                   </div>

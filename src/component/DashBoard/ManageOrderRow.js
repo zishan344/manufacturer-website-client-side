@@ -1,6 +1,7 @@
 import React from "react";
 
 const ManageOrderRow = ({ order, index }) => {
+  console.log(order);
   return (
     <tr>
       <th>
@@ -14,7 +15,7 @@ const ManageOrderRow = ({ order, index }) => {
             </div>
           </div>
           <div>
-            <div class="font-bold">{order.name}</div>
+            <div class="font-bold">{order?.product_name || order?.name}</div>
           </div>
         </div>
       </td>
