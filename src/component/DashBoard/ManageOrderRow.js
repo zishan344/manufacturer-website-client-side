@@ -50,14 +50,16 @@ const ManageOrderRow = ({ order, index, refetch }) => {
         </div>
       </th>
       <td>
-        <div class="flex items-center space-x-3">
-          <div class="avatar">
-            <div class="mask mask-squircle w-12 h-12">
+        <div className="flex items-center space-x-3">
+          <div className="avatar">
+            <div className="mask mask-squircle w-12 h-12">
               <img src={order.image} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
           <div>
-            <div class="font-bold">{order?.product_name || order?.name}</div>
+            <div className="font-bold">
+              {order?.product_name || order?.name}
+            </div>
           </div>
         </div>
       </td>
@@ -65,11 +67,13 @@ const ManageOrderRow = ({ order, index, refetch }) => {
         {order.email}
         <br />
         {order?.number && (
-          <span class="badge badge-ghost badge-sm">Phone: {order?.number}</span>
+          <span className="badge badge-ghost badge-sm">
+            Phone: {order?.number}
+          </span>
         )}
         <br />
         {order?.shipignAddress && (
-          <span class="badge badge-ghost badge-sm">
+          <span className="badge badge-ghost badge-sm">
             location: {order?.shipignAddress}
           </span>
         )}
@@ -80,21 +84,21 @@ const ManageOrderRow = ({ order, index, refetch }) => {
 
       <th className="text-center">
         {order.totalPrice && !order.paid && (
-          <button class="btn btn-error btn-xs mr-4">Unpaid</button>
+          <button className="btn btn-error btn-xs mr-4">Unpaid</button>
         )}
         {order.paid && order?.status == "pending" && (
           <>
-            <button class="btn btn-primary btn-xs mr-4">pending..</button>
-            <button onClick={delivered} class="btn btn-primary btn-xs mr-4">
+            <button className="btn btn-primary btn-xs mr-4">pending..</button>
+            <button onClick={delivered} className="btn btn-primary btn-xs mr-4">
               stiffed
             </button>
           </>
         )}
         {order.paid && order?.status == "delivered" && (
-          <button class="btn btn-primary btn-xs mr-4">delivered</button>
+          <button className="btn btn-primary btn-xs mr-4">delivered</button>
         )}
-        {/* <button class="btn btn-error btn-xs mr-4">pending</button>
-        <button class="btn btn-xs btn-primary">shift</button> */}
+        {/* <button className="btn btn-error btn-xs mr-4">pending</button>
+        <button className="btn btn-xs btn-primary">shift</button> */}
       </th>
     </tr>
   );

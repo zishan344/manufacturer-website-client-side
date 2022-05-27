@@ -126,8 +126,8 @@ const ProductDetils = () => {
   };
 
   return (
-    <div class="bg-base-100 container mx-auto">
-      <div class="hero-content flex-col lg:flex-row gap-8">
+    <div className="bg-base-100 container mx-auto">
+      <div className="hero-content flex-col lg:flex-row gap-8">
         <div className="flex-1 flex flex-col justify-center border-2 border-slate-300 p-5">
           <div>
             <img
@@ -137,7 +137,7 @@ const ProductDetils = () => {
             />
           </div>
           <div>
-            <span class="font-semibold">{name}. </span>
+            <span className="font-semibold">{name}. </span>
 
             <span>
               Price: $<span className="font-semibold">{price}.</span>{" "}
@@ -153,20 +153,20 @@ const ProductDetils = () => {
             <h3 className="text-2xl my-6 font-bold font-medium">
               Product Description:
             </h3>
-            <p class=" mt-2 mb-4">{description}</p>
+            <p className=" mt-2 mb-4">{description}</p>
           </div>
         </div>
         <div className="flex-1">
-          <div class="flex justify-center py-4 bg-base-100">
-            <div class="card w-full max-w-lg  bg-base-100">
-              <div class="card-body">
+          <div className="flex justify-center py-4 bg-base-100">
+            <div className="card w-full max-w-lg  bg-base-100">
+              <div className="card-body">
                 <h2 className="text-2xl font-bold text-secondary">
                   Purses Now
                 </h2>
                 <form onSubmit={formSubmit}>
-                  <div class="form-control w-full max-w-lg">
-                    <label class="label">
-                      <span class="label-text">Name</span>
+                  <div className="form-control w-full max-w-lg">
+                    <label className="label">
+                      <span className="label-text">Name</span>
                     </label>
                     <input
                       name="name"
@@ -174,12 +174,12 @@ const ProductDetils = () => {
                       readOnly
                       value={user?.displayName}
                       placeholder="User Name"
-                      class="input input-bordered w-full max-w-lg"
+                      className="input input-bordered w-full max-w-lg"
                     />
                   </div>
-                  <div class="form-control w-full max-w-lg">
-                    <label class="label">
-                      <span class="label-text">Email</span>
+                  <div className="form-control w-full max-w-lg">
+                    <label className="label">
+                      <span className="label-text">Email</span>
                     </label>
                     <input
                       name="email"
@@ -188,57 +188,60 @@ const ProductDetils = () => {
                       readOnly
                       value={user?.email}
                       placeholder="Email"
-                      class="input input-bordered w-full max-w-lg"
+                      className="input input-bordered w-full max-w-lg"
                     />
                   </div>
 
-                  <label class="label mt-3">
-                    <span class="label-text">Shipping Address</span>
+                  <label className="label mt-3">
+                    <span className="label-text">Shipping Address</span>
                   </label>
                   <textarea
                     name="description"
                     required
-                    class="w-full max-w-lg textarea textarea-bordered"
+                    className="w-full max-w-lg textarea textarea-bordered"
                     placeholder="Shipping Address"
                   ></textarea>
 
-                  <div class="form-control w-full max-w-lg">
-                    <label class="label">
-                      <span class="label-text">Phone number</span>
+                  <div className="form-control w-full max-w-lg">
+                    <label className="label">
+                      <span className="label-text">Phone number</span>
                     </label>
                     <input
                       required
                       name="number"
                       type="Number"
                       placeholder="Number"
-                      class="input input-bordered w-full max-w-lg"
+                      className="input input-bordered w-full max-w-lg"
                     />
                   </div>
-                  <div class="form-control w-full max-w-lg">
-                    <label class="label">
-                      <span class="label-text">Quantity</span>
+                  <div className="form-control w-full max-w-lg">
+                    <label className="label">
+                      <span className="label-text">Quantity</span>
                     </label>
                     <input
                       name="quantity"
                       onChange={handleOrderQty}
-                      class="input input-bordered w-full max-w-lg"
+                      className="input input-bordered w-full max-w-lg"
                       type="number"
                       id="quantity"
                       title="Quantity"
                       value={inputValue || minimum_order}
                     />
-                    <label class="label">
+                    <label className="label">
                       {error && (
-                        <span class="label-text text-red-500"> {error}</span>
+                        <span className="label-text text-red-500">
+                          {" "}
+                          {error}
+                        </span>
                       )}
                     </label>
                   </div>
 
-                  <div class="form-control mt-6  ">
+                  <div className="form-control mt-6  ">
                     <button
                       disabled={error}
                       type="submit"
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                     >
                       Book now
                     </button>

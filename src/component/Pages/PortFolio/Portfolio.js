@@ -24,8 +24,18 @@ const Portfolio = () => {
                 >
                   I'm Marouful Islam , <br />
                   Web Designer &amp; Web Developer <br />
-                  from Bangladesh, Chittagong.
+                  from Chittagong, Bangladesh.
                 </h1>
+                <h2
+                  className="text-accent"
+                  style={{
+                    fontSize: "20px",
+                    lineHeight: "56px",
+                    fontFamily: "cursive",
+                  }}
+                >
+                  Education: I am study Raipur Gawsia Hashemia Dakhil Madrasa
+                </h2>
                 <p className="my-5">
                   I have rich experience in web site design &amp; building and
                   customization. Also I am good at html, css, javascript, React
@@ -103,59 +113,59 @@ const Portfolio = () => {
               New project of 2022
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center my-12">
-              <div class="card card-compact max-w-lg bg-base-100 shadow-xl">
+              <div className="card card-compact max-w-lg bg-base-100 shadow-xl">
                 <figure>
                   <img
                     src="https://i.ibb.co/hBXptvh/Screenshot-18.png"
                     alt="Shoes"
                   />
                 </figure>
-                <div class="card-body">
-                  <h2 class="card-title">furniture whorehouse</h2>
+                <div className="card-body">
+                  <h2 className="card-title">furniture whorehouse</h2>
                   <p>
                     If you want to be collect the more information this project
                     please visit the link
                   </p>
-                  <div class="card-actions justify-center">
+                  <div className="card-actions justify-center">
                     <a
                       target="_blank"
                       href="https://furniture-warehouse.web.app/"
                       rel="noreferrer"
                     >
-                      <button class="btn btn-primary">
+                      <button className="btn btn-primary">
                         see the full project
                       </button>
                     </a>
                   </div>
                 </div>
               </div>
-              <div class="card card-compact max-w-lg bg-base-100 shadow-xl">
+              <div className="card card-compact max-w-lg bg-base-100 shadow-xl">
                 <figure>
                   <img
                     src="https://i.ibb.co/HYs4S3j/Screenshot-17.png"
                     alt="Shoes"
                   />
                 </figure>
-                <div class="card-body">
-                  <h2 class="card-title">Recipe maker</h2>
+                <div className="card-body">
+                  <h2 className="card-title">Recipe maker</h2>
                   <p>
                     If you want to be collect the more information this project
                     please visit the link
                   </p>
-                  <div class="card-actions justify-center">
+                  <div className="card-actions justify-center">
                     <a
                       target="_blank"
                       href="https://recipi-maker-org.netlify.app/"
                       rel="noreferrer"
                     >
-                      <button class="btn btn-primary">
+                      <button className="btn btn-primary">
                         see the full project
                       </button>
                     </a>
                   </div>
                 </div>
               </div>
-              <div class="card card-compact max-w-lg bg-base-100 shadow-xl">
+              <div className="card card-compact max-w-lg bg-base-100 shadow-xl">
                 <figure>
                   <img
                     src="
@@ -163,19 +173,19 @@ const Portfolio = () => {
                     alt="Shoes"
                   />
                 </figure>
-                <div class="card-body mt-5">
-                  <h2 class="card-title">Bike lover.com</h2>
+                <div className="card-body mt-5">
+                  <h2 className="card-title">Bike lover.com</h2>
                   <p>
                     If you want to be collect the more information this project
                     please visit the link
                   </p>
-                  <div class="card-actions justify-center">
+                  <div className="card-actions justify-center">
                     <a
                       target="_blank"
                       href="https://poetic-salmiakki-771f0a.netlify.app/"
                       rel="noreferrer"
                     >
-                      <button class="btn btn-primary">
+                      <button className="btn btn-primary">
                         see the full project
                       </button>
                     </a>

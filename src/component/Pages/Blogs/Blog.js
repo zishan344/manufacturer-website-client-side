@@ -7,12 +7,12 @@ const Blog = () => {
         <div>
           <div
             tabindex="2"
-            class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
           >
-            <div class="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium">
               How will you improve the performance of a React Application?
             </div>
-            <div class="collapse-content">
+            <div className="collapse-content">
               <ol className="list-decimal pl-4 font-bold">
                 <li>
                   <span className="text-xl font-bold">
@@ -76,12 +76,12 @@ const Blog = () => {
         <div>
           <div
             tabindex="4"
-            class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
           >
-            <div class="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium">
               How does prototypical inheritance work?
             </div>
-            <div class="collapse-content">
+            <div className="collapse-content">
               <p>
                 Simply put, prototypical inheritance refers to the capability to
                 access object properties from another object. We use a
@@ -102,12 +102,12 @@ const Blog = () => {
         <div>
           <div
             tabindex="6"
-            class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
           >
-            <div class="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium">
               Why you do not set the state directly in React?
             </div>
-            <div class="collapse-content">
+            <div className="collapse-content">
               <p className="flex flex-col gap-8">
                 One should noway modernize the state directly because of the
                 following reasons
@@ -126,17 +126,16 @@ const Blog = () => {
             </div>
           </div>
         </div>
-
         <div>
           <div
             tabindex="4"
-            class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
           >
-            <div class="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium">
               What are the different ways to manage a state in a React
               application?
             </div>
-            <div class="collapse-content">
+            <div className="collapse-content">
               <p className="font-bold text-secondary text-xl">
                 There are four main types of state you need to properly manage
                 in your React apps:
@@ -168,12 +167,12 @@ const Blog = () => {
         <div>
           <div
             tabindex="10"
-            class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
           >
-            <div class="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium">
               What is a unit test? Why should write unit tests?
             </div>
-            <div class="collapse-content">
+            <div className="collapse-content">
               <p>
                 Unit tests are generally automated tests written and run by
                 software formulators to ensure that a section of an operation(

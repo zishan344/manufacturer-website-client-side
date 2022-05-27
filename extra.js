@@ -32,9 +32,9 @@
 
 
 inputvalu
- <div class="action-top d-sm-flex">
-              <div class=" ">
-                <label for="quantity" class=" ">
+ <div className="action-top d-sm-flex">
+              <div className=" ">
+                <label for="quantity" className=" ">
                   Quantity
                 </label>
                 <input
@@ -56,7 +56,7 @@ inputvalu
                 
                 
               </div>
-              <button type="submit" class="btn btn-bordered btn-primary">
+              <button type="submit" className="btn btn-bordered btn-primary">
                 Add to Cart
               </button>
             </div>
@@ -78,9 +78,9 @@ const up = () => {
   };
   
   <form onSubmit={addedCart}>
-            <div class="action-top d-sm-flex">
-              <div class="pro-qty mr-3 mb-4 mb-sm-0">
-                <label for="quantity" class="sr-only">
+            <div className="action-top d-sm-flex">
+              <div className="pro-qty mr-3 mb-4 mb-sm-0">
+                <label for="quantity" className="sr-only">
                   Quantity
                 </label>
                 <input
@@ -102,19 +102,19 @@ const up = () => {
                 <button
                   onClick={up}
                   type="button"
-                  class="inc qty-btn bts flex justify-center items-center"
+                  className="inc qty-btn bts flex justify-center items-center"
                 >
                   +
                 </button>
                 <button
                   onClick={down}
                   type="button"
-                  class="dec qty-btn bts flex justify-center items-center"
+                  className="dec qty-btn bts flex justify-center items-center"
                 >
                   -
                 </button>
               </div>
-              <button type="submit" class="btn btn-bordered btn-primary">
+              <button type="submit" className="btn btn-bordered btn-primary">
                 Add to Cart
               </button>
             </div>

@@ -18,27 +18,27 @@ const FlashSell = () => {
             Add To Card
           </button>
         </div>
-        <div class="grid grid-flow-col gap-5 text-center auto-cols-max justify-center mt-8">
-          <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-            <span class="countdown font-mono text-5xl">
+        <div className="grid grid-flow-col gap-5 text-center auto-cols-max justify-center mt-8">
+          <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <span className="countdown font-mono text-5xl">
               <span style={{ "--value": "15" }}></span>
             </span>
             days
           </div>
-          <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-            <span class="countdown font-mono text-5xl">
+          <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <span className="countdown font-mono text-5xl">
               <span style={{ "--value": "12" }}></span>
             </span>
             hours
           </div>
-          <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-            <span class="countdown font-mono text-5xl">
+          <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <span className="countdown font-mono text-5xl">
               <span style={{ "--value": "51" }}></span>
             </span>
             min
           </div>
-          <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-            <span class="countdown font-mono text-5xl">
+          <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <span className="countdown font-mono text-5xl">
               <span style={{ "--value": "5" }}></span>
             </span>
             sec

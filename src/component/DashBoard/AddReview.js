@@ -33,14 +33,14 @@ const AddReview = () => {
     reset();
   };
   return (
-    <div class="flex justify-center py-4 bg-base-100">
-      <div class="card w-full max-w-lg shadow-2xl bg-base-100">
-        <div class="card-body">
+    <div className="flex justify-center py-4 bg-base-100">
+      <div className="card w-full max-w-lg shadow-2xl bg-base-100">
+        <div className="card-body">
           <h2 className="text-2xl font-bold text-secondary">Add A Review</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div class="form-control w-full max-w-lg">
-              <label class="label">
-                <span class="label-text">User Name</span>
+            <div className="form-control w-full max-w-lg">
+              <label className="label">
+                <span className="label-text">User Name</span>
               </label>
               <input
                 {...register("user_name", {
@@ -53,9 +53,9 @@ const AddReview = () => {
                 readOnly
                 value={user?.displayName}
                 placeholder="User Name"
-                class="input input-bordered w-full max-w-lg"
+                className="input input-bordered w-full max-w-lg"
               />
-              <label class="label">
+              <label className="label">
                 {errors?.product_name?.type === "required" && (
                   <span className="text-red-500">
                     {errors.product_name.message}
@@ -64,18 +64,18 @@ const AddReview = () => {
               </label>
             </div>
 
-            <label class="label mt-3">
-              <span class="label-text">description</span>
+            <label className="label mt-3">
+              <span className="label-text">description</span>
             </label>
             <textarea
               {...register("description")}
-              class="w-full max-w-lg textarea textarea-bordered"
+              className="w-full max-w-lg textarea textarea-bordered"
               placeholder="description"
             ></textarea>
 
-            <div class="form-control w-full max-w-lg">
-              <label class="label">
-                <span class="label-text">Rating number</span>
+            <div className="form-control w-full max-w-lg">
+              <label className="label">
+                <span className="label-text">Rating number</span>
               </label>
               <input
                 {...register("rating", {
@@ -88,17 +88,17 @@ const AddReview = () => {
                 min="1"
                 max="5"
                 placeholder="Rating "
-                class="input input-bordered w-full max-w-lg"
+                className="input input-bordered w-full max-w-lg"
               />
-              <label class="label">
+              <label className="label">
                 {errors?.rating?.type === "required" && (
                   <span className="text-red-500">{errors.rating.message}</span>
                 )}
               </label>
             </div>
 
-            <div class="form-control mt-6  ">
-              <button type="submit" class="btn btn-primary">
+            <div className="form-control mt-6  ">
+              <button type="submit" className="btn btn-primary">
                 send feedback
               </button>
             </div>

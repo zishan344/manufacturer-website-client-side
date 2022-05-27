@@ -12,16 +12,16 @@ const Review = ({ review }) => {
   return (
     <div className="card max-w-lg bg-base-100 shadow-xl ">
       {review?.image ? (
-        <div class="avatar flex justify-center mt-4">
-          <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+        <div className="avatar flex justify-center mt-4">
+          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <img src={image} alt="Shoes" className="rounded-xl" />
           </div>
         </div>
       ) : (
-        <div class="avatar flex justify-center mt-4">
+        <div className="avatar flex justify-center mt-4">
           <div
             style={{ display: "flex" }}
-            class="w-24 rounded-full ring ring-primary bg-primary ring-offset-base-100 ring-offset-2 justify-center items-center"
+            className="w-24 rounded-full ring ring-primary bg-primary ring-offset-base-100 ring-offset-2 justify-center items-center"
           >
             <span className="rounded-xl text-3xl font-bold text-secondary">
               {fullName}

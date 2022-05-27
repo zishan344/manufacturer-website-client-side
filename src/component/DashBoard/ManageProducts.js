@@ -39,8 +39,8 @@ const ManageProducts = () => {
     );
   }
   return (
-    <div class="overflow-x-auto w-full">
-      <table class="table w-full">
+    <div className="overflow-x-auto w-full">
+      <table className="table w-full">
         {/* <!-- head --> */}
         <thead>
           <tr>

@@ -25,14 +25,14 @@ const ManageProductRow = ({ product, index, refetch }) => {
         <label>{index + 1}</label>
       </th>
       <td>
-        <div class="flex items-center space-x-3">
-          <div class="avatar">
-            <div class="mask mask-squircle w-12 h-12">
+        <div className="flex items-center space-x-3">
+          <div className="avatar">
+            <div className="mask mask-squircle w-12 h-12">
               <img src={product.image} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
           <div>
-            <div class="font-bold">{product.name}</div>
+            <div className="font-bold">{product.name}</div>
           </div>
         </div>
       </td>
@@ -40,7 +40,7 @@ const ManageProductRow = ({ product, index, refetch }) => {
       <td className="text-center">{product.minimum_order}</td>
       <th>{product.product_quantity}</th>
       <th>
-        <button onClick={deleteItem} class="btn btn-error btn-xs mr-4">
+        <button onClick={deleteItem} className="btn btn-error btn-xs mr-4">
           delete
         </button>
       </th>

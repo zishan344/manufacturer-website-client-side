@@ -13,12 +13,12 @@ const Service = ({ service }) => {
   } = service;
   const navigate = useNavigate();
   return (
-    <div class="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
         <img src={image} alt="car parts" />
       </figure>
-      <div class="card-body">
-        <h2 class="card-title">{name}</h2>
+      <div className="card-body">
+        <h2 className="card-title">{name}</h2>
         <p className="tex-sm font-bold">Price: ${price}</p>
         <p>Available products: {product_quantity}</p>
         <p>minimum order: {minimum_order} </p>
@@ -28,7 +28,7 @@ const Service = ({ service }) => {
             <span title={`${description}`}>...</span>
           )}
         </p>
-        <div class="card-actions justify-end">
+        <div className="card-actions justify-end">
           <button
             onClick={() => navigate(`/productDetils/${_id}`)}
             className="btn btn-primary"

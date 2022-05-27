@@ -47,14 +47,14 @@ const Login = () => {
     return <Loading />;
   }
   return (
-    <div class="flex justify-center py-4 bg-base-200">
-      <div class="card w-full max-w-sm shadow-2xl bg-base-100">
-        <div class="card-body">
+    <div className="flex justify-center py-4 bg-base-200">
+      <div className="card w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card-body">
           <h2 className="text-2xl font-bold text-secondary"> Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Email</span>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Email</span>
               </label>
               <input
                 {...register("email", {
@@ -70,9 +70,9 @@ const Login = () => {
                 type="email"
                 onBlur={(e) => setEmail(e.target.value)}
                 placeholder="Email"
-                class="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs"
               />
-              <label class="label">
+              <label className="label">
                 {errors?.email?.type === "required" && (
                   <span className="text-red-500">{errors.email.message}</span>
                 )}
@@ -81,9 +81,9 @@ const Login = () => {
                 )}
               </label>
             </div>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Password</span>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Password</span>
               </label>
               <input
                 {...register("password", {
@@ -94,9 +94,9 @@ const Login = () => {
                 })}
                 type="password"
                 placeholder="Password"
-                class="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs"
               />
-              <label class="label">
+              <label className="label">
                 {errors?.password?.type === "required" && (
                   <span className="text-red-500">
                     {errors.password.message}
@@ -110,7 +110,7 @@ const Login = () => {
                     await sendPasswordResetEmail(email);
                     toast.success("send email successfully");
                   }}
-                  class="label-text-alt text-blue-500 link link-hover"
+                  className="label-text-alt text-blue-500 link link-hover"
                 >
                   Forgot password?
                 </span>
@@ -123,18 +123,18 @@ const Login = () => {
               </span>
             </div>
             {mrError}
-            <div class="form-control mt-6  ">
-              <button type="submit" class="btn btn-primary">
+            <div className="form-control mt-6  ">
+              <button type="submit" className="btn btn-primary">
                 Login
               </button>
             </div>
           </form>
         </div>
-        <div class="divider px-2">OR</div>
+        <div className="divider px-2">OR</div>
         <div className="text-center px-6 mb-4">
           <button
             onClick={() => signInWithGoogle()}
-            class="btn w-full btn-outline btn-secondary"
+            className="btn w-full btn-outline btn-secondary"
           >
             continue with google
           </button>
