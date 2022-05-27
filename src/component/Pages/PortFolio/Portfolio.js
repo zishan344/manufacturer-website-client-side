@@ -26,15 +26,7 @@ const Portfolio = () => {
                   Web Designer &amp; Web Developer <br />
                   from Chittagong, Bangladesh.
                 </h1>
-                <h2
-                  className="text-accent"
-                  style={{
-                    fontSize: "20px",
-                    fontFamily: "cursive",
-                  }}
-                >
-                  Education: I am study Raipur Gawsia Hashemia Dakhil Madrasa
-                </h2>
+
                 <p className="my-5">
                   I have rich experience in web site design &amp; building and
                   customization. Also I am good at html, css, javascript, React
@@ -53,6 +45,68 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
+
+        <div className="overflow-x-auto">
+          <table className="table w-full">
+            {/* <!-- head --> */}
+            <thead>
+              <tr className=" text-slate-900">
+                <th></th>
+                <th className="text-center">Email</th>
+                <th className="text-center">Phone</th>
+                <th>Educational/Qualification</th>
+                <th className="text-center">Educational/institution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <label></label>
+                </td>
+                <td
+                  className="text-accent text-center"
+                  style={{
+                    fontSize: "16px",
+                    fontFamily: "cursive",
+                  }}
+                >
+                  zishanahmed344@gmail.com
+                </td>
+                <td
+                  className="text-accent text-center"
+                  style={{
+                    fontSize: "16px",
+                    fontFamily: "cursive",
+                  }}
+                >
+                  +880 1810272303
+                </td>
+                <td
+                  className="text-accent text-center"
+                  style={{
+                    fontSize: "16px",
+                    fontFamily: "cursive",
+                  }}
+                >
+                  Class-10
+                </td>
+                <td>
+                  {" "}
+                  <h2
+                    className="text-accent text-center"
+                    style={{
+                      fontSize: "20px",
+                      fontFamily: "cursive",
+                    }}
+                  >
+                    Raipur Gawsia Hashemia Dakhil Madrasa
+                  </h2>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <div className="my-20 max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <h2 className=" font-bold text-3xl">Skills</h2>
