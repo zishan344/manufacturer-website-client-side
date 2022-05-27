@@ -102,8 +102,8 @@ const Portfolio = () => {
             <h2 className="text-secondary font-bold text-lg">
               New project of 2022
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:justify-center">
-              <div class="card card-compact w-96 bg-base-100 shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center my-12">
+              <div class="card card-compact max-w-lg bg-base-100 shadow-xl">
                 <figure>
                   <img
                     src="https://i.ibb.co/hBXptvh/Screenshot-18.png"
@@ -112,13 +112,24 @@ const Portfolio = () => {
                 </figure>
                 <div class="card-body">
                   <h2 class="card-title">furniture whorehouse</h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
-                  <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+                  <p>
+                    If you want to be collect the more information this project
+                    please visit the link
+                  </p>
+                  <div class="card-actions justify-center">
+                    <a
+                      target="_blank"
+                      href="https://furniture-warehouse.web.app/"
+                      rel="noreferrer"
+                    >
+                      <button class="btn btn-primary">
+                        see the full project
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
-              <div class="card card-compact w-96 bg-base-100 shadow-xl">
+              <div class="card card-compact max-w-lg bg-base-100 shadow-xl">
                 <figure>
                   <img
                     src="https://i.ibb.co/HYs4S3j/Screenshot-17.png"
@@ -126,14 +137,25 @@ const Portfolio = () => {
                   />
                 </figure>
                 <div class="card-body">
-                  <h2 class="card-title">Shoes!</h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
-                  <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+                  <h2 class="card-title">Recipe maker</h2>
+                  <p>
+                    If you want to be collect the more information this project
+                    please visit the link
+                  </p>
+                  <div class="card-actions justify-center">
+                    <a
+                      target="_blank"
+                      href="https://recipi-maker-org.netlify.app/"
+                      rel="noreferrer"
+                    >
+                      <button class="btn btn-primary">
+                        see the full project
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
-              <div class="card card-compact w-96 bg-base-100 shadow-xl">
+              <div class="card card-compact max-w-lg bg-base-100 shadow-xl">
                 <figure>
                   <img
                     src="
@@ -141,14 +163,18 @@ const Portfolio = () => {
                     alt="Shoes"
                   />
                 </figure>
-                <div class="card-body">
-                  <h2 class="card-title">Shoes!</h2>
+                <div class="card-body mt-5">
+                  <h2 class="card-title">Bike lover.com</h2>
                   <p>
                     If you want to be collect the more information this project
-                    please visite the link
+                    please visit the link
                   </p>
                   <div class="card-actions justify-center">
-                    <a href="https://furniture-warehouse.web.app/">
+                    <a
+                      target="_blank"
+                      href="https://poetic-salmiakki-771f0a.netlify.app/"
+                      rel="noreferrer"
+                    >
                       <button class="btn btn-primary">
                         see the full project
                       </button>

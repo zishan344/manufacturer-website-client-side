@@ -40,10 +40,10 @@ const ManageOrder = () => {
           <tr>
             <th></th>
             <th>Product</th>
-            <th>price</th>
+            <th>Delivery Information</th>
+            <th>Price</th>
             <th>quantity</th>
-            <th>Total</th>
-            <th className="text-center">Email</th>
+            <th>Total Price</th>
             <th className="text-center">Action</th>
           </tr>
         </thead>

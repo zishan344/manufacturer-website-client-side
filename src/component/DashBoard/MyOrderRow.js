@@ -1,15 +1,15 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MyOrderRow = ({ order, index, refetch }) => {
   const { _id } = order;
-  const navigate = useNavigate();
+
   const deleteItem = () => {
     const confirm = window.confirm("are you sure delete this item");
     if (!confirm) {
       return;
     }
-    fetch(`http://localhost:5000/booking/${_id}`, {
+    fetch(`https://desolate-citadel-69075.herokuapp.com/booking/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -21,9 +21,7 @@ const MyOrderRow = ({ order, index, refetch }) => {
         console.log(result);
       });
   };
-  //   const payment = (id) => {
-  //     navigate(`/dashboard/payment/${id}`);
-  //   };
+
   return (
     <tr>
       <th>
@@ -45,10 +43,6 @@ const MyOrderRow = ({ order, index, refetch }) => {
       <td>{order.quantity}</td>
       <th>${order.totalPrice}</th>
       <th>
-        {/* 
-        <Link to={`/dashboard/payment/${order._id}`}>
-          <button className="btn btn-xs btn-primary">pay</button>
-        </Link> */}
         {order.totalPrice && !order.paid && (
           <>
             <button onClick={deleteItem} class="btn btn-error btn-xs mr-4">

@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillDelete } from "react-icons/ai";
 
 const ManageOrderRow = ({ order, index, refetch }) => {
   // https://desolate-citadel-69075.herokuapp.com/order/628e4ac656dfeabd3a95bab8
@@ -18,14 +19,35 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       .then((res) => res.json())
       .then((data) => {
         refetch();
-        console.log(data);
       });
   };
-
+  const deleteItem = () => {
+    const confirm = window.confirm("are you sure delete this item");
+    if (!confirm) {
+      return;
+    }
+    fetch(`https://desolate-citadel-69075.herokuapp.com/booking/${order._id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        refetch();
+      });
+  };
   return (
     <tr>
       <th>
-        <label>{index + 1}</label>
+        <div className="flex justify-between gap-2 items-center">
+          <label>{index + 1}</label>
+          <span>
+            <button onClick={deleteItem} className="btn btn-ghost">
+              <AiFillDelete className="text-red-400 font-bold text-2xl cursor-pointer" />
+            </button>
+          </span>
+        </div>
       </th>
       <td>
         <div class="flex items-center space-x-3">
@@ -39,10 +61,22 @@ const ManageOrderRow = ({ order, index, refetch }) => {
           </div>
         </div>
       </td>
+      <td>
+        {order.email}
+        <br />
+        {order?.number && (
+          <span class="badge badge-ghost badge-sm">Phone: {order?.number}</span>
+        )}
+        <br />
+        {order?.shipignAddress && (
+          <span class="badge badge-ghost badge-sm">
+            location: {order?.shipignAddress}
+          </span>
+        )}
+      </td>
       <td>${order.price}</td>
       <td>{order.quantity}</td>
       <th>${order.totalPrice}</th>
-      <th className="text-center">{order.email}</th>
 
       <th className="text-center">
         {order.totalPrice && !order.paid && (

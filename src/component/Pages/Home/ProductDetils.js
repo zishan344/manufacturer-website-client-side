@@ -236,10 +236,7 @@ const ProductDetils = () => {
 
                   <div class="form-control mt-6  ">
                     <button
-                      disabled={
-                        Number(inputValue) < Number(minimum_order) ||
-                        Number(inputValue) > Number(product_quantity)
-                      }
+                      disabled={error}
                       type="submit"
                       class="btn btn-primary"
                     >

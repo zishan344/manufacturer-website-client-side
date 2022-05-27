@@ -18,7 +18,7 @@ const Services = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.slice(0, 3).map((s, index) => (
+        {services.slice(Math.max(services.length - 3, 0)).map((s, index) => (
           <Service service={s} key={index} />
         ))}
       </div>

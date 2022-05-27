@@ -38,7 +38,7 @@ const Payment = () => {
   console.log(product);
   const { userName, product_name, totalPrice, image } = product;
   return (
-    <div class="card max-w-lg bg-base-100 shadow-xl text-primary-content">
+    <div class="card max-w-lg bg-base-100 mx-auto shadow-xl text-primary-content">
       <div class="card-body ">
         <h2 class="card-title text-secondary text-sm"> Hello {userName}</h2>
         <p className="font-bold text-xl">
