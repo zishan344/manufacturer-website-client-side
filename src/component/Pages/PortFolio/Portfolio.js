@@ -29,11 +29,11 @@ const Portfolio = () => {
                 <p className="my-5">
                   I have rich experience in web site design &amp; building and
                   customization. Also I am good at html, css, javascript, React
-                  js, tailwind, firebase, bootstrap. I love learning something
-                  new. I am a hard worker. I am dedicated on my work finish on
-                  the the deadline. I love to talk with you about our unique
-                  approach. Feel free to contact me writing an email with your
-                  project idea.
+                  js, tailwind, firebase, bootstrap,sass node js express js
+                  mongodb git&github. I love learning something new. I am a hard
+                  worker. I am dedicated on my work finish on the the deadline.
+                  I love to talk with you about our unique approach. Feel free
+                  to contact me writing an email with your project idea.
                 </p>
               </div>
               <div className="bts">
