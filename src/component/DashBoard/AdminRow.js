@@ -23,12 +23,15 @@ const AdminRow = ({ index, user, refetch }) => {
     if (!confirm) {
       return;
     }
-    fetch(`http://localhost:5000/users/removeAdmin/${email}`, {
-      method: "PATCH",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://desolate-citadel-69075.herokuapp.com/users/removeAdmin/${email}`,
+      {
+        method: "PATCH",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();

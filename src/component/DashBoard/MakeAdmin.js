@@ -30,6 +30,9 @@ const MakeAdmin = () => {
   if (isLoading) {
     return <Loading />;
   }
+  if (allUser.length === 0) {
+    return <Loading />;
+  }
   return (
     <div class="overflow-x-auto w-full">
       <table class="table w-full">
