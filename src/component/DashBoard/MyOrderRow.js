@@ -55,7 +55,7 @@ const MyOrderRow = ({ order, index, refetch }) => {
         {order.totalPrice && !order.paid && (
           <>
             <button onClick={deleteItem} className="btn btn-error btn-xs mr-4">
-              delete
+              cancel
             </button>
             <Link to={`/dashboard/payment/${order._id}`}>
               <button className="btn btn-xs btn-success">pay</button>
