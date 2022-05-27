@@ -59,7 +59,6 @@ const MyProfile = () => {
           refetch();
           console.log(data);
         });
-      setEdit(false);
     } else {
       toast.error("minimum fill up 1 input");
     }
@@ -68,18 +67,18 @@ const MyProfile = () => {
     console.log(cart);
   };
   return (
-    <div className="card max-w-lg mx-auto bg-base-100 shadow-xl items-center">
+    <div class="card max-w-lg mx-auto bg-base-100 shadow-xl items-center">
       {user?.photoURL ? (
-        <div className="avatar flex justify-center mt-4">
-          <div className="w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+        <div class="avatar flex justify-center mt-4">
+          <div class="w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <img src={user?.photoURL} alt="Shoes" className="rounded-xl" />
           </div>
         </div>
       ) : (
-        <div className="avatar flex justify-center mt-4">
+        <div class="avatar flex justify-center mt-4">
           <div
             style={{ display: "flex" }}
-            className="w-28 rounded-full ring ring-primary bg-primary ring-offset-base-100 ring-offset-2 justify-center items-center"
+            class="w-28 rounded-full ring ring-primary bg-primary ring-offset-base-100 ring-offset-2 justify-center items-center"
           >
             <span className="rounded-xl text-3xl font-bold text-secondary">
               {fullName}
@@ -87,7 +86,7 @@ const MyProfile = () => {
           </div>
         </div>
       )}
-      <div className="card-body ">
+      <div class="card-body ">
         <div className="tex-xl flex flex-col font-bold gap-5">
           <h2>
             Name{" "}
@@ -132,11 +131,11 @@ const MyProfile = () => {
           )}
         </div>
 
-        <div className="card-actions justify-center">
-          <label className="swap ">
+        <div class="card-actions justify-center">
+          <label class="swap ">
             <input onClick={() => setEdit(!edit)} type="checkbox" />
-            <div className="swap-on btn btn-ghost text-xl font-bold ">X</div>
-            <div className="swap-off link btn btn-active btn-link text-secondary">
+            <div class="swap-on btn btn-ghost text-xl font-bold ">X</div>
+            <div class="swap-off link btn btn-active btn-link text-secondary">
               Edit Profile
             </div>
           </label>
@@ -147,48 +146,48 @@ const MyProfile = () => {
               Update your profile
             </h2>
             <form onSubmit={handleSubmit}>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">update location</span>
+              <div class="form-control w-full max-w-xs">
+                <label class="label">
+                  <span class="label-text">update location</span>
                 </label>
                 <input
                   name="location"
                   type="text"
                   placeholder="Location"
-                  className="input input-bordered w-full max-w-xs"
+                  class="input input-bordered w-full max-w-xs"
                 />
               </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">Educational/Qualification</span>
+              <div class="form-control w-full max-w-xs">
+                <label class="label">
+                  <span class="label-text">Educational/Qualification</span>
                 </label>
                 <input
                   name="education"
                   type="text"
                   placeholder="Educational/Qualification"
-                  className="input input-bordered w-full max-w-xs"
+                  class="input input-bordered w-full max-w-xs"
                 />
               </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">Phone</span>
+              <div class="form-control w-full max-w-xs">
+                <label class="label">
+                  <span class="label-text">Phone</span>
                 </label>
                 <input
                   name="phone"
                   type="number"
                   placeholder="Phone number"
-                  className="input input-bordered w-full max-w-xs"
+                  class="input input-bordered w-full max-w-xs"
                 />
               </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">LinkedIn profile</span>
+              <div class="form-control w-full max-w-xs">
+                <label class="label">
+                  <span class="label-text">LinkedIn profile</span>
                 </label>
                 <input
                   name="linkedin"
                   type="text"
                   placeholder="LinkedIn profile"
-                  className="input input-bordered w-full max-w-xs"
+                  class="input input-bordered w-full max-w-xs"
                 />
               </div>
               <button className="btn btn-primary mt-4 btn-sm">Save</button>

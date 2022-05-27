@@ -1,41 +1,58 @@
 import React from "react";
-
+import Swal from "sweetalert2";
 const AdminRow = ({ index, user, refetch }) => {
   const { email, role } = user;
   const makeAdmin = () => {
-    const confirm = window.confirm("Are you sure");
-    if (!confirm) {
-      return;
-    }
-    fetch(`https://desolate-citadel-69075.herokuapp.com/users/admin/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        refetch();
-      });
+    Swal.fire({
+      title: "Are you sure make this admin?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, make admin!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://desolate-citadel-69075.herokuapp.com/users/admin/${email}`,
+          {
+            method: "PUT",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+          });
+      }
+    });
   };
   const removeAdmin = () => {
-    const confirm = window.confirm("Are you sure");
-    if (!confirm) {
-      return;
-    }
-    fetch(
-      `https://desolate-citadel-69075.herokuapp.com/users/removeAdmin/${email}`,
-      {
-        method: "PATCH",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
+    Swal.fire({
+      title: "Are you sure Remove This Admin?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, remove admin!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://desolate-citadel-69075.herokuapp.com/users/removeAdmin/${email}`,
+          {
+            method: "PATCH",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+          });
       }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        refetch();
-      });
+    });
   };
   return (
     <tr>

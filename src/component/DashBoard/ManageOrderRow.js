@@ -1,41 +1,59 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
-
+import Swal from "sweetalert2";
 const ManageOrderRow = ({ order, index, refetch }) => {
   // https://desolate-citadel-69075.herokuapp.com/order/628e4ac656dfeabd3a95bab8
   const delivered = () => {
-    const confirm = window.confirm(
-      "Are you sure you want to delivered this product"
-    );
-    if (!confirm) {
-      return;
-    }
-    fetch(`https://desolate-citadel-69075.herokuapp.com/order/${order._id}`, {
-      method: "PATCH",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        refetch();
-      });
+    Swal.fire({
+      title: "Are you sure want to delivered this product?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delivered it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://desolate-citadel-69075.herokuapp.com/order/${order._id}`,
+          {
+            method: "PATCH",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+          });
+      }
+    });
   };
   const deleteItem = () => {
-    const confirm = window.confirm("are you sure delete this item");
-    if (!confirm) {
-      return;
-    }
-    fetch(`https://desolate-citadel-69075.herokuapp.com/booking/${order._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        refetch();
-      });
+    Swal.fire({
+      title: "Are you sure delete this product?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://desolate-citadel-69075.herokuapp.com/booking/${order._id}`,
+          {
+            method: "DELETE",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((result) => {
+            refetch();
+          });
+      }
+    });
   };
   return (
     <tr>

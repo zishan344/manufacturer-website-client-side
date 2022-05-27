@@ -4,9 +4,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
-
 const ProductDetils = () => {
   const { id } = useParams();
   const [user, loading, Uerror] = useAuthState(auth);
@@ -72,56 +72,65 @@ const ProductDetils = () => {
     if (Number(product_quantity) < Number(productQuantity)) {
       return toast.error("product not available");
     }
-    const confirm = window.confirm("are sure addde this product");
-    if (!confirm) {
-      return;
-    }
-    const totalProduct = Number(product_quantity) - Number(productQuantity);
-    const total = Number(productQuantity) * Number(price);
 
-    const updateBody = {
-      image,
-      description,
-      name,
-      price,
-      minimum_order,
-      product_quantity: totalProduct,
-    };
-    fetch(`https://desolate-citadel-69075.herokuapp.com/product/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify(updateBody),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        refetch();
-      });
-    const booking = {
-      productId: _id,
-      userName,
-      product_name: name,
-      email,
-      image,
-      shipignAddress,
-      number,
-      price,
-      quantity: productQuantity,
-      totalPrice: total,
-    };
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I am sure!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const totalProduct = Number(product_quantity) - Number(productQuantity);
+        const total = Number(productQuantity) * Number(price);
 
-    fetch("https://desolate-citadel-69075.herokuapp.com/booking", {
-      method: "POST",
-      headers: {
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify(booking),
-    })
-      .then((res) => res.json)
-      .then((data) => {
-        toast.success("product added successfully check the order");
-      });
+        const updateBody = {
+          image,
+          description,
+          name,
+          price,
+          minimum_order,
+          product_quantity: totalProduct,
+        };
+        fetch(`https://desolate-citadel-69075.herokuapp.com/product/${id}`, {
+          method: "PUT",
+          headers: {
+            "content-Type": "application/json",
+          },
+          body: JSON.stringify(updateBody),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            refetch();
+          });
+        const booking = {
+          productId: _id,
+          userName,
+          product_name: name,
+          email,
+          image,
+          shipignAddress,
+          number,
+          price,
+          quantity: productQuantity,
+          totalPrice: total,
+        };
+
+        fetch("https://desolate-citadel-69075.herokuapp.com/booking", {
+          method: "POST",
+          headers: {
+            "content-Type": "application/json",
+          },
+          body: JSON.stringify(booking),
+        })
+          .then((res) => res.json)
+          .then((data) => {
+            toast.success("product added successfully check the order");
+          });
+      }
+    });
+
     e.target.reset();
   };
 

@@ -1,23 +1,31 @@
 import React from "react";
-
+import Swal from "sweetalert2";
 const ManageProductRow = ({ product, index, refetch }) => {
   const { _id } = product;
   const deleteItem = () => {
-    const confirm = window.confirm("are you sure delete this item");
-    if (!confirm) {
-      return;
-    }
-    fetch(`https://desolate-citadel-69075.herokuapp.com/product/${_id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        refetch();
-        console.log(result);
-      });
+    Swal.fire({
+      title: "Are you sure delete this item?",
+
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://desolate-citadel-69075.herokuapp.com/product/${_id}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            refetch();
+            console.log(result);
+          });
+      }
+    });
   };
   return (
     <tr>
