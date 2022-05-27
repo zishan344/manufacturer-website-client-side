@@ -45,7 +45,7 @@ const Payment = () => {
           Please pay for <span className="text-secondary">{product_name}</span>{" "}
         </p>
         <div className="flex justify-center">
-          <img className="w-sm p-8" src={image} alt="" />
+          <img className="w-[50%] p-8" src={image} alt="" />
         </div>
         <p>Please pay ${totalPrice}</p>
 

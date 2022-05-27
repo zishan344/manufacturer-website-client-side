@@ -132,7 +132,7 @@ const ProductDetils = () => {
           <div>
             <img
               src={image}
-              className=" flex w-full rounded-lg"
+              className=" flex w-[50%] mx-auto rounded-lg"
               alt="car parts"
             />
           </div>
