@@ -10,7 +10,7 @@ const Review = ({ review }) => {
     .toUpperCase();
 
   return (
-    <div className="card max-w-lg bg-base-100 shadow-xl ">
+    <div className="card max-w-lg bg-base-100 shadow-xl mx-auto">
       {review?.image ? (
         <div className="avatar flex justify-center mt-4">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

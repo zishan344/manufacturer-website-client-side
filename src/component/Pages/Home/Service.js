@@ -13,7 +13,7 @@ const Service = ({ service }) => {
   } = service;
   const navigate = useNavigate();
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card card-compact max-w-lg bg-base-100 px-4 mx-auto shadow-xl">
       <figure>
         <img src={image} alt="car parts" />
       </figure>

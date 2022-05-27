@@ -30,7 +30,6 @@ const Portfolio = () => {
                   className="text-accent"
                   style={{
                     fontSize: "20px",
-                    lineHeight: "56px",
                     fontFamily: "cursive",
                   }}
                 >
