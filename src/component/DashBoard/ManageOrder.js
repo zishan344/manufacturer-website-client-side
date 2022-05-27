@@ -3,9 +3,9 @@ import React from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import UseLoading from "../hooks/UseLoading";
 import Loading from "../Shared/Loading";
 import ManageOrderRow from "./ManageOrderRow";
-
 const ManageOrder = () => {
   const navigate = useNavigate();
 
@@ -31,6 +31,9 @@ const ManageOrder = () => {
   );
   if (isLoading) {
     return <Loading />;
+  }
+  if (orders.length === 0) {
+    return <UseLoading order={"All Order is completed, Wait for order"} />;
   }
   return (
     <div class="overflow-x-auto w-full ">

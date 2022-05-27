@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import UseLoading from "../hooks/UseLoading";
 import Loading from "../Shared/Loading";
 import MyOrderRow from "./MyOrderRow";
 
@@ -36,6 +37,9 @@ const MyOrder = () => {
   );
   if (isLoading) {
     return <Loading />;
+  }
+  if (orders.length === 0) {
+    return <UseLoading order={"Your Order Cart is empty"} />;
   }
 
   return (

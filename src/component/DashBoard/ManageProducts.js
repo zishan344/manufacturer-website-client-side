@@ -3,6 +3,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import UseLoading from "../hooks/UseLoading";
 import Loading from "../Shared/Loading";
 import ManageProductRow from "./ManageProductRow";
 
@@ -31,6 +32,11 @@ const ManageProducts = () => {
   );
   if (isLoading) {
     return <Loading />;
+  }
+  if (products.length === 0) {
+    return (
+      <UseLoading order={"Product Not Available Please Add The product"} />
+    );
   }
   return (
     <div class="overflow-x-auto w-full">

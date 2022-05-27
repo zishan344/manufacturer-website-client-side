@@ -18,6 +18,22 @@ const AdminRow = ({ index, user, refetch }) => {
         refetch();
       });
   };
+  const removeAdmin = () => {
+    const confirm = window.confirm("Are you sure");
+    if (!confirm) {
+      return;
+    }
+    fetch(`http://localhost:5000/users/removeAdmin/${email}`, {
+      method: "PATCH",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+      });
+  };
   return (
     <tr>
       <td>
@@ -32,7 +48,15 @@ const AdminRow = ({ index, user, refetch }) => {
         )}
       </td>
       <td>
-        <button class="btn btn-primary btn-xs mr-4">Remove user</button>
+        {role === "admin" ? (
+          <button onClick={removeAdmin} class="btn btn-primary btn-xs mr-4">
+            Remove Admin
+          </button>
+        ) : (
+          <button disabled class="btn btn-disabled  btn-xs mr-4">
+            User
+          </button>
+        )}
       </td>
     </tr>
   );

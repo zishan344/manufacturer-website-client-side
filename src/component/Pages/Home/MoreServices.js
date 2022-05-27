@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../../Shared/Loading";
 import Service from "./Service";
 
 const MoreServices = () => {
@@ -8,6 +9,10 @@ const MoreServices = () => {
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
+  if (services.length === 0) {
+    return <Loading />;
+  }
+
   return (
     <div className="container mx-auto mb-10">
       <div className="text-center">

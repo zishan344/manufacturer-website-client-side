@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../../Shared/Loading";
 import Review from "./Review";
 
 const AllReviews = () => {
@@ -10,6 +11,9 @@ const AllReviews = () => {
         setReview(data);
       });
   }, []);
+  if (reviews.length === 0) {
+    return <Loading />;
+  }
   return (
     <div className="my-12 container mx-auto">
       <div className="text-center">
