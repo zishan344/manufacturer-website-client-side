@@ -24,7 +24,7 @@
 - mongodb
 - express js
 
-# website feature and section
+# Available section
 
 - Home section
 
@@ -43,6 +43,15 @@
 
 - blogs section
 - my item section
+
+# website feature
+
+- This is a car parts website
+- From hear users can buy different types of car parts
+- Users can give reviews if they want. And be able to update user profile
+- It includes Payment method
+- It includes an admin dashboard. Anyone can be given admin and can be removed again
+- If someone is an admin then you can add products deliver products and delete products handle
 
 # description on the website
 

@@ -3,6 +3,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import Rating from "react-rating";
 const Review = ({ review }) => {
   const { image, user_name, description, rating } = review;
+  console.log(review);
   const fullName = review?.user_name
     ?.split(" ")
     .map((name) => name[0])
@@ -14,7 +15,7 @@ const Review = ({ review }) => {
       {review?.image ? (
         <div className="avatar flex justify-center mt-4">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={image} alt="Shoes" className="rounded-xl" />
+            <img src={image} alt="profile" className="rounded-xl" />
           </div>
         </div>
       ) : (

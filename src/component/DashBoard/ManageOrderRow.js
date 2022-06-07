@@ -108,7 +108,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
           <>
             <button className="btn btn-primary btn-xs mr-4">pending..</button>
             <button onClick={delivered} className="btn btn-primary btn-xs mr-4">
-              stiffed
+              shipped
             </button>
           </>
         )}
