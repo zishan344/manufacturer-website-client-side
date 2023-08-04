@@ -28,6 +28,7 @@ const AddProduct = () => {
       .then((result) => console.log(result));
     reset();
   };
+
   return (
     <div className="flex justify-center py-4 bg-base-100">
       <div className="card w-full max-w-lg shadow-2xl bg-base-100">
