@@ -5,9 +5,12 @@ import FlashSell from "./FlashSell";
 import Reviews from "./Reviews";
 import Second_Banner from "./Second_Banner";
 import Services from "./Services";
+import { useProducts } from "../../hooks/useProducts";
+import Loading from "../../Shared/Loading";
 
 const Home = () => {
-  return (
+  const [products, setProducts] = useProducts();
+  return products.length !== 0 ? (
     <div>
       <Banner></Banner>
       <Services />
@@ -16,6 +19,8 @@ const Home = () => {
       <Reviews />
       <Second_Banner />
     </div>
+  ) : (
+    <Loading />
   );
 };
 

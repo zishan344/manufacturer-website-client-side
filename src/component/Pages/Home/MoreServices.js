@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Loading from "../../Shared/Loading";
 import Service from "./Service";
+import { useProducts } from "../../hooks/useProducts";
 
 const MoreServices = () => {
-  const [services, setServices] = useState([]);
-  useEffect(() => {
-    fetch("https://autovantis.onrender.com/products")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
-  if (services.length === 0) {
+  const [Products, setProducts] = useProducts();
+  if (Products.length === 0) {
     return <Loading />;
   }
 
@@ -21,7 +17,7 @@ const MoreServices = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((s, index) => (
+        {Products.map((s, index) => (
           <Service service={s} key={index} />
         ))}
       </div>

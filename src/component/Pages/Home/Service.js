@@ -15,7 +15,7 @@ const Service = ({ service }) => {
   return (
     <div className="card card-compact max-w-lg bg-base-100 px-4 mx-auto shadow-xl">
       <figure>
-        <img src={image} alt="car parts" />
+        <img className="h-44" src={image} alt="car parts" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
@@ -31,8 +31,7 @@ const Service = ({ service }) => {
         <div className="card-actions justify-end">
           <button
             onClick={() => navigate(`/productDetils/${_id}`)}
-            className="btn btn-primary"
-          >
+            className="btn btn-primary">
             buy now
           </button>
         </div>

@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Service from "./Service";
+import { useProducts } from "../../hooks/useProducts";
 
 const Services = () => {
-  const [services, setServices] = useState([]);
+  const [products, setProducts] = useProducts();
   const navigate = useNavigate();
-  useEffect(() => {
-    fetch("https://autovantis.onrender.com/products")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
+
   return (
     <div className="container mx-auto">
       <div className="text-center">
@@ -18,7 +15,7 @@ const Services = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.slice(Math.max(services.length - 3, 0)).map((s, index) => (
+        {products.slice(Math.max(products.length - 3, 0)).map((s, index) => (
           <Service service={s} key={index} />
         ))}
       </div>
