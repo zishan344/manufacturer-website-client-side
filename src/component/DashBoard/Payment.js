@@ -18,7 +18,7 @@ const Payment = () => {
     isLoading,
     error,
   } = useQuery(["order", id], () =>
-    fetch(`https://desolate-citadel-69075.herokuapp.com/userBooking/${id}`, {
+    fetch(`https://autovantis.onrender.com/userBooking/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

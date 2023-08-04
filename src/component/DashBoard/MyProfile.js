@@ -14,7 +14,7 @@ const MyProfile = () => {
     error,
     refetch,
   } = useQuery("profile", () =>
-    fetch(`https://desolate-citadel-69075.herokuapp.com/user/${user?.email}`, {
+    fetch(`https://autovantis.onrender.com/user/${user?.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -43,17 +43,14 @@ const MyProfile = () => {
       linkedin,
     };
     if (location || education || phone || linkedin) {
-      fetch(
-        `https://desolate-citadel-69075.herokuapp.com/profile/${user?.email}`,
-        {
-          method: "PUT",
-          headers: {
-            "content-Type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          body: JSON.stringify(cart),
-        }
-      )
+      fetch(`https://autovantis.onrender.com/profile/${user?.email}`, {
+        method: "PUT",
+        headers: {
+          "content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(cart),
+      })
         .then((res) => res.json())
         .then((data) => {
           refetch();
@@ -78,8 +75,7 @@ const MyProfile = () => {
         <div class="avatar flex justify-center mt-4">
           <div
             style={{ display: "flex" }}
-            class="w-28 rounded-full ring ring-primary bg-primary ring-offset-base-100 ring-offset-2 justify-center items-center"
-          >
+            class="w-28 rounded-full ring ring-primary bg-primary ring-offset-base-100 ring-offset-2 justify-center items-center">
             <span className="rounded-xl text-3xl font-bold text-secondary">
               {fullName}
             </span>

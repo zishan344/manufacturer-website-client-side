@@ -20,7 +20,7 @@ const AddReview = () => {
       rating,
       image: user?.photoURL,
     };
-    fetch("https://desolate-citadel-69075.herokuapp.com/review", {
+    fetch("https://autovantis.onrender.com/review", {
       method: "POST",
       headers: {
         "content-Type": "application/json",
@@ -70,8 +70,7 @@ const AddReview = () => {
             <textarea
               {...register("description")}
               className="w-full max-w-lg textarea textarea-bordered"
-              placeholder="description"
-            ></textarea>
+              placeholder="description"></textarea>
 
             <div className="form-control w-full max-w-lg">
               <label className="label">

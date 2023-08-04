@@ -13,7 +13,7 @@ const MakeAdmin = () => {
     error,
     refetch,
   } = useQuery("order", () =>
-    fetch(`https://desolate-citadel-69075.herokuapp.com/allUser`, {
+    fetch(`https://autovantis.onrender.com/allUser`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

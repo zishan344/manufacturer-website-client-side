@@ -17,7 +17,7 @@ const AddProduct = () => {
       minimum_order: min_order,
       product_quantity: stock,
     };
-    fetch("https://desolate-citadel-69075.herokuapp.com/product", {
+    fetch("https://autovantis.onrender.com/product", {
       method: "POST",
       headers: {
         "content-Type": "application/json",
@@ -87,8 +87,7 @@ const AddProduct = () => {
             <textarea
               {...register("description")}
               className="w-full max-w-lg textarea textarea-bordered"
-              placeholder="description"
-            ></textarea>
+              placeholder="description"></textarea>
 
             <div className="form-control w-full max-w-lg">
               <label className="label">

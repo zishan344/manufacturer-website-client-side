@@ -6,7 +6,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://desolate-citadel-69075.herokuapp.com/products")
+    fetch("https://autovantis.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -25,8 +25,7 @@ const Services = () => {
       <div className="text-center my-10">
         <button
           onClick={() => navigate("/allProduct")}
-          className="btn btn-outline btn-secondary"
-        >
+          className="btn btn-outline btn-secondary">
           Explore More
         </button>
       </div>

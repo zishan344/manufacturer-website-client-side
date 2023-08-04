@@ -5,7 +5,7 @@ import Review from "./Review";
 const Reviews = () => {
   const [reviews, setReview] = useState([]);
   useEffect(() => {
-    fetch("https://desolate-citadel-69075.herokuapp.com/reviews")
+    fetch("https://autovantis.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReview(data);
@@ -28,8 +28,7 @@ const Reviews = () => {
       <div className="text-center my-10">
         <button
           onClick={() => navigate("/allReviews")}
-          className="btn btn-outline btn-secondary"
-        >
+          className="btn btn-outline btn-secondary">
           See More Reviews
         </button>
       </div>

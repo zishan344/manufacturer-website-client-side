@@ -14,7 +14,7 @@ const MyOrderRow = ({ order, index, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://desolate-citadel-69075.herokuapp.com/booking/${_id}`, {
+        fetch(`https://autovantis.onrender.com/booking/${_id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

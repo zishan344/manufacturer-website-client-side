@@ -15,7 +15,7 @@ const ManageOrder = () => {
     error,
     refetch,
   } = useQuery("order", () =>
-    fetch(`https://desolate-citadel-69075.herokuapp.com/booking`, {
+    fetch(`https://autovantis.onrender.com/booking`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

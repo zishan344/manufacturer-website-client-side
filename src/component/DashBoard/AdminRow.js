@@ -12,15 +12,12 @@ const AdminRow = ({ index, user, refetch }) => {
       confirmButtonText: "Yes, make admin!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://desolate-citadel-69075.herokuapp.com/users/admin/${email}`,
-          {
-            method: "PUT",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          }
-        )
+        fetch(`https://autovantis.onrender.com/users/admin/${email}`, {
+          method: "PUT",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             refetch();
@@ -38,15 +35,12 @@ const AdminRow = ({ index, user, refetch }) => {
       confirmButtonText: "Yes, remove admin!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://desolate-citadel-69075.herokuapp.com/users/removeAdmin/${email}`,
-          {
-            method: "PATCH",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          }
-        )
+        fetch(`https://autovantis.onrender.com/users/removeAdmin/${email}`, {
+          method: "PATCH",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             refetch();

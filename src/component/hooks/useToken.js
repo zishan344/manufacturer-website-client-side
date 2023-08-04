@@ -8,7 +8,7 @@ const useToken = (user) => {
     if (!email) {
       return;
     }
-    fetch(`https://desolate-citadel-69075.herokuapp.com/user/${email}`, {
+    fetch(`https://autovantis.onrender.com/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

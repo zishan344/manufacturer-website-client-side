@@ -19,7 +19,7 @@ const ProductDetils = () => {
     isLoading,
     refetch,
   } = useQuery(["product", id], () =>
-    fetch(`https://desolate-citadel-69075.herokuapp.com/product/${id}`, {
+    fetch(`https://autovantis.onrender.com/product/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -93,7 +93,7 @@ const ProductDetils = () => {
           minimum_order,
           product_quantity: totalProduct,
         };
-        fetch(`https://desolate-citadel-69075.herokuapp.com/product/${id}`, {
+        fetch(`https://autovantis.onrender.com/product/${id}`, {
           method: "PUT",
           headers: {
             "content-Type": "application/json",
@@ -117,7 +117,7 @@ const ProductDetils = () => {
           totalPrice: total,
         };
 
-        fetch("https://desolate-citadel-69075.herokuapp.com/booking", {
+        fetch("https://autovantis.onrender.com/booking", {
           method: "POST",
           headers: {
             "content-Type": "application/json",
@@ -208,8 +208,7 @@ const ProductDetils = () => {
                     name="description"
                     required
                     className="w-full max-w-lg textarea textarea-bordered"
-                    placeholder="Shipping Address"
-                  ></textarea>
+                    placeholder="Shipping Address"></textarea>
 
                   <div className="form-control w-full max-w-lg">
                     <label className="label">
@@ -250,8 +249,7 @@ const ProductDetils = () => {
                     <button
                       disabled={error}
                       type="submit"
-                      className="btn btn-primary"
-                    >
+                      className="btn btn-primary">
                       Book now
                     </button>
                   </div>

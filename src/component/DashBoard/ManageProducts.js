@@ -16,7 +16,7 @@ const ManageProducts = () => {
     error,
     refetch,
   } = useQuery("order", () =>
-    fetch(`https://desolate-citadel-69075.herokuapp.com/products`, {
+    fetch(`https://autovantis.onrender.com/products`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -2,7 +2,7 @@ import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 const ManageOrderRow = ({ order, index, refetch }) => {
-  // https://desolate-citadel-69075.herokuapp.com/order/628e4ac656dfeabd3a95bab8
+  // https://autovantis.onrender.com/order/628e4ac656dfeabd3a95bab8
   const delivered = () => {
     Swal.fire({
       title: "Are you sure want to delivered this product?",
@@ -13,15 +13,12 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       confirmButtonText: "Yes, delivered it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://desolate-citadel-69075.herokuapp.com/order/${order._id}`,
-          {
-            method: "PATCH",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          }
-        )
+        fetch(`https://autovantis.onrender.com/order/${order._id}`, {
+          method: "PATCH",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             refetch();
@@ -39,15 +36,12 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://desolate-citadel-69075.herokuapp.com/booking/${order._id}`,
-          {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          }
-        )
+        fetch(`https://autovantis.onrender.com/booking/${order._id}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
           .then((res) => res.json())
           .then((result) => {
             refetch();
