@@ -1,6 +1,7 @@
-# Are you ready to see on project description
+# Are you ready to see the project description
 
 ## Autovantis live website link: [Autovantis](https://car-parts-b9011.web.app/).
+## Autovantis GitHub server link: [server](https://github.com/zishan344/manufacturer-website-server-side).
 
 # Available technology frontend
 
