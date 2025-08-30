@@ -57,4 +57,4 @@
 
 This is Car parts base manufacturer website . \
 if you want to be a many kind of car parts product on this website.\
- If you want to manage your stook product update ,delete ,etc.\
+If you want to manage your stook product update ,delete ,etc.\
