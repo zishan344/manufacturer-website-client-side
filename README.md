@@ -49,8 +49,13 @@ A smart, stylish, and feature-rich web application for car parts manufacturers a
 - Portfolio
 
 ## 🖼️ Screenshot
-![App Screenshot](./images/screenshot.png)
-> Place your screenshot in the `images/` folder as `screenshot.png`.
+![App Screenshot](./public/ss1.png)
+#
+![App Screenshot](./public/ss2.png)
+#
+![App Screenshot](./public/ss3.png)
+#
+![App Screenshot](./public/ss4.png)
 
 ## 📋 How to Run Locally
 1. Clone the repo:
