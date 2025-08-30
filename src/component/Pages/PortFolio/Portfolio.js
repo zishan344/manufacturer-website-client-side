@@ -1,254 +1,75 @@
 import React from "react";
+import { FaGithub, FaLinkedin, FaTwitter, FaDownload, FaExternalLinkAlt } from "react-icons/fa";
+import ContactAndEducation from "./ContactAndEducation";
+import Skills from "./Skills";
+import Projects from "./Projects";
+
 const Portfolio = () => {
   return (
-    <div>
-      <div className="container my-5 mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-          <div>
-            <img
-              className="w-100"
-              src="https://cdn-icons-png.flaticon.com/512/21/21104.png"
-              alt=""
-            />
-          </div>
-          <div>
-            <div>
-              <div className="text-box">
-                <h1
-                  style={{
-                    fontSize: "44px",
-                    lineHeight: "56px",
-                    fontFamily: "'Kaushan Script', cursive",
-                    color: "#292929",
-                  }}
+    <div className="bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+            <div className="order-2 md:order-1">
+              <h2 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+                M Marouful Islam Zishan
+              </h2>
+              <h3 className="text-2xl font-medium text-gray-700 mb-6">
+                Full Stack Software Engineer
+              </h3>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Passionate Full Stack Developer with a proven track record of creating robust, user-centric web applications. I bridge the gap between cutting-edge frontend experiences and scalable backend solutions. My technical arsenal spans multiple languages and frameworks including <span className="font-medium">C/C++, Python, JavaScript, TypeScript, React, Node.js</span> and various database technologies. I excel at transforming complex requirements into elegant, efficient code while maintaining a keen focus on performance and accessibility. My collaborative approach and commitment to continuous learning enable me to deliver innovative solutions that drive business value.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a 
+                  href="https://drive.google.com/uc?export=download&id=1ELRDq1l4iu9b2wKXVZzXDNm09NVsgbmb" 
+                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex items-center"
+                  target="_blank" 
+                  rel="noreferrer"
                 >
-                  I'm Marouful Islam , <br />
-                  Web Designer &amp; Web Developer <br />
-                  from Chittagong, Bangladesh.
-                </h1>
-
-                <p className="my-5">
-                  I have rich experience in web site design &amp; building and
-                  customization. Also I am good at html, css, javascript, React
-                  js, tailwind, firebase, bootstrap,sass node js express js
-                  mongodb git&github. I love learning something new. I am a hard
-                  worker. I am dedicated on my work finish on the the deadline.
-                  I love to talk with you about our unique approach. Feel free
-                  to contact me writing an email with your project idea.
-                </p>
-              </div>
-              <div className="bts">
-                <button className="btn text-secondary link btn-link">
-                  Download Resume
-                </button>
+                  <FaDownload className="mr-2" /> Download Resume
+                </a>
+                <div className="flex space-x-4 items-center">
+                  <a href="https://github.com/zishan344" target="_blank" rel="noreferrer" className="text-gray-700 hover:text-blue-600 transition-colors text-2xl">
+                    <FaGithub />
+                  </a>
+                  <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors text-2xl">
+                    <FaLinkedin />
+                  </a>
+                  <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors text-2xl">
+                    <FaTwitter />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="table w-full">
-            {/* <!-- head --> */}
-            <thead>
-              <tr className=" text-slate-900">
-                <th></th>
-                <th className="text-center">Email</th>
-                <th className="text-center">Phone</th>
-                <th>Educational/Qualification</th>
-                <th className="text-center">Educational/institution</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <label></label>
-                </td>
-                <td
-                  className="text-accent text-center"
-                  style={{
-                    fontSize: "16px",
-                    fontFamily: "cursive",
-                  }}
-                >
-                  zishanahmed344@gmail.com
-                </td>
-                <td
-                  className="text-accent text-center"
-                  style={{
-                    fontSize: "16px",
-                    fontFamily: "cursive",
-                  }}
-                >
-                  +880 1810272303
-                </td>
-                <td
-                  className="text-accent text-center"
-                  style={{
-                    fontSize: "16px",
-                    fontFamily: "cursive",
-                  }}
-                >
-                  Class-10
-                </td>
-                <td>
-                  {" "}
-                  <h2
-                    className="text-accent text-center"
-                    style={{
-                      fontSize: "20px",
-                      fontFamily: "cursive",
-                    }}
-                  >
-                    Raipur Gawsia Hashemia Dakhil Madrasa
-                  </h2>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="my-20 max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className=" font-bold text-3xl">Skills</h2>
-            <h2 className="text-secondary font-bold text-lg">
-              DEVELOPMENT ARSENAL
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 justify-center gap-10 ">
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              Html
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              css
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              bootstrap
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              tailwind
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              sass
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              javascript
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              react
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              firebase
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              node js
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              express js
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              mongodb
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              jwt
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              git
-            </button>
-            <button className="btn bg-black text-white font-bold mr-2 border-none ">
-              github
-            </button>
-          </div>
-        </div>
-        <div>
-          <div className="text-center mb-10">
-            <h2 className=" font-bold text-3xl">Recent Project</h2>
-            <h2 className="text-secondary font-bold text-lg">
-              New project of 2022
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center my-12">
-              <div className="card card-compact max-w-lg bg-base-100 shadow-xl">
-                <figure>
+            <div className="order-1 md:order-2 flex justify-center">
+              <div className="relative">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl">
                   <img
-                    src="https://i.ibb.co/hBXptvh/Screenshot-18.png"
-                    alt="Shoes"
+                    className="w-full h-full object-cover"
+                    src="/mohammad-maroful-islam-zishan.jpg"
+                    alt="Profile"
                   />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">furniture whorehouse</h2>
-                  <p>
-                    If you want to be collect the more information this project
-                    please visit the link
-                  </p>
-                  <div className="card-actions justify-center">
-                    <a
-                      target="_blank"
-                      href="https://furniture-warehouse.web.app/"
-                      rel="noreferrer"
-                    >
-                      <button className="btn btn-primary">
-                        see the full project
-                      </button>
-                    </a>
-                  </div>
                 </div>
-              </div>
-              <div className="card card-compact max-w-lg bg-base-100 shadow-xl">
-                <figure>
-                  <img
-                    src="https://i.ibb.co/HYs4S3j/Screenshot-17.png"
-                    alt="Shoes"
-                  />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">Recipe maker</h2>
-                  <p>
-                    If you want to be collect the more information this project
-                    please visit the link
-                  </p>
-                  <div className="card-actions justify-center">
-                    <a
-                      target="_blank"
-                      href="https://recipi-maker-org.netlify.app/"
-                      rel="noreferrer"
-                    >
-                      <button className="btn btn-primary">
-                        see the full project
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="card card-compact max-w-lg bg-base-100 shadow-xl">
-                <figure>
-                  <img
-                    src="
-                    https://i.ibb.co/nCmWCHL/Screenshot-16.png"
-                    alt="Shoes"
-                  />
-                </figure>
-                <div className="card-body mt-5">
-                  <h2 className="card-title">Bike lover.com</h2>
-                  <p>
-                    If you want to be collect the more information this project
-                    please visit the link
-                  </p>
-                  <div className="card-actions justify-center">
-                    <a
-                      target="_blank"
-                      href="https://poetic-salmiakki-771f0a.netlify.app/"
-                      rel="noreferrer"
-                    >
-                      <button className="btn btn-primary">
-                        see the full project
-                      </button>
-                    </a>
-                  </div>
+                <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full py-2 px-4 shadow-lg">
+                  <p className="font-bold">Chattogram, Bangladesh</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+      
+      {/* Contact & Education Section */}
+      <ContactAndEducation/>
+
+      {/* Skills Section - Network Diagram Style */}
+      <Skills/>
+
+      {/* Projects Section */}
+      <Projects/>
+      
     </div>
   );
 };

@@ -1,61 +1,73 @@
-# Are you ready to see the project description
+# 🚗 Autovantis: Car Parts Manufacturer Website
 
-## Autovantis live website link: [Autovantis](https://car-parts-b9011.web.app/).
-## Autovantis GitHub server link: [server](https://github.com/zishan344/manufacturer-website-server-side).
+A smart, stylish, and feature-rich web application for car parts manufacturers and buyers. Built with modern technologies for a seamless experience.
 
-# Available technology frontend
+---
 
+## 🌐 Live Demo
+- [Autovantis Website](https://car-parts-b9011.web.app/)
+- [Server GitHub Repo](https://github.com/zishan344/manufacturer-website-server-side)
+
+## ✨ Features
+- Modern, responsive UI
+- Secure authentication (Firebase)
+- User & Admin dashboards
+- Product management (add, edit, delete)
+- Order management
+- Stripe payment integration
+- Review & rating system
+- Profile management
+- Blog & portfolio sections
+
+## 🛠️ Tech Stack
+**Frontend:**
 - React
-- React router
-- Tailwind
+- React Router
+- Tailwind CSS
 - Firebase
-- react-firebase-hooks
+- React Query
+- React Hook Form
+- Stripe
+- React Toastify
+- React Icons
 
-* react-tostify
-* react icons
-* react query
-* rea form hooks
-* stripe.com payment getaway
-
-# Available technology backend
-
-- NodeJs
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB
 - dotenv
 - cors
-- mongodb
-- express js
 
-# Available section
+## 📁 Main Sections
+- Home
+- Dashboard (User & Admin)
+- Add/Manage Products
+- Orders & Payments
+- Reviews
+- Profile
+- Blogs
+- Portfolio
 
-- Home section
+## 🖼️ Screenshot
+![App Screenshot](./images/screenshot.png)
+> Place your screenshot in the `images/` folder as `screenshot.png`.
 
-* Dashboard
-* Admin sucre Dashboard
+## 📋 How to Run Locally
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/zishan344/manufacturer-website-client-side.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the app:
+   ```bash
+   npm start
+   ```
 
-- Add item section
-- manage item section
+## 📖 Description
+Autovantis is a car parts manufacturer website where users can browse, buy, and review products. Admins can manage inventory, orders, and users. The platform is designed for speed, security, and ease of use.
 
-* Add product section
-* Manage product section
-* Portfolio section
-* profile section
-* payment section
-* review section
-
-- blogs section
-- my item section
-
-# website feature
-
-- This is a car parts website
-- From hear users can buy different types of car parts
-- Users can give reviews if they want. And be able to update user profile
-- It includes Payment method
-- It includes an admin dashboard. Anyone can be given admin and can be removed again
-- If someone is an admin then you can add products deliver products and delete products handle
-
-# description on the website
-
-This is Car parts base manufacturer website . \
-if you want to be a many kind of car parts product on this website.\
-If you want to manage your stook product update ,delete ,etc.\
+## 📝 License
+MIT
