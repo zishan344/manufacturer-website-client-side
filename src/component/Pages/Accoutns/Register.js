@@ -68,7 +68,7 @@ const Register = () => {
         <div className="hidden lg:flex flex-col justify-center space-y-6 px-8">
           <div className="space-y-4">
             <div className="inline-flex items-center px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
-              ✨ Join Our Community
+              Join Our Community
             </div>
             <h1 className="text-5xl font-bold text-gray-800 leading-tight">
               Start Your

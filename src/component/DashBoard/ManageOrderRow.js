@@ -1,4 +1,4 @@
-import React from "react";
+
 import { 
   FiTrash2, 
   FiTruck, 
@@ -95,8 +95,8 @@ const ManageOrderRow = ({ order, index, refetch }) => {
   const getStatusBadge = () => {
     if (!order.paid) {
       return (
-        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-          <FiAlertCircle className="mr-1" size={12} />
+        <span className="inline-flex items-center px-1.5 xl:px-2 py-0.5 rounded-full text-[10px] xl:text-xs font-medium bg-red-100 text-red-800 whitespace-nowrap">
+          <FiAlertCircle className="mr-0.5" size={8} />
           Unpaid
         </span>
       );
@@ -104,16 +104,16 @@ const ManageOrderRow = ({ order, index, refetch }) => {
     
     if (order.status === "delivered") {
       return (
-        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-          <FiCheck className="mr-1" size={12} />
+        <span className="inline-flex items-center px-1.5 xl:px-2 py-0.5 rounded-full text-[10px] xl:text-xs font-medium bg-green-100 text-green-800 whitespace-nowrap">
+          <FiCheck className="mr-0.5" size={8} />
           Delivered
         </span>
       );
     }
     
     return (
-      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-        <FiClock className="mr-1" size={12} />
+      <span className="inline-flex items-center px-1.5 xl:px-2 py-0.5 rounded-full text-[10px] xl:text-xs font-medium bg-yellow-100 text-yellow-800 whitespace-nowrap">
+        <FiClock className="mr-0.5" size={8} />
         Pending
       </span>
     );
@@ -122,98 +122,98 @@ const ManageOrderRow = ({ order, index, refetch }) => {
   return (
     <tr className="hover:bg-gray-50/50 transition-colors duration-200">
       {/* Index and Delete */}
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="flex items-center space-x-3">
-          <span className="text-sm font-medium text-gray-900">
+      <td className="px-2 xl:px-4 py-2 xl:py-3 whitespace-nowrap">
+        <div className="flex items-center space-x-1 xl:space-x-2">
+          <span className="text-xs font-medium text-gray-900">
             #{(index + 1).toString().padStart(3, '0')}
           </span>
           <button
             onClick={deleteItem}
-            className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
+            className="p-1 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
             title="Delete Order"
           >
-            <FiTrash2 size={16} />
+            <FiTrash2 size={12} />
           </button>
         </div>
       </td>
 
       {/* Product Info */}
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="flex items-center space-x-4">
-          <div className="flex-shrink-0 w-12 h-12">
+      <td className="px-2 xl:px-4 py-2 xl:py-3">
+        <div className="flex items-center space-x-2">
+          <div className="flex-shrink-0 w-8 h-8 xl:w-10 xl:h-10">
             <img
               src={order.image}
               alt={order?.product_name || order?.name}
-              className="w-12 h-12 rounded-xl object-cover border border-gray-200"
+              className="w-full h-full rounded-lg object-cover border border-gray-200"
             />
           </div>
-          <div>
-            <div className="text-sm font-medium text-gray-900 truncate max-w-xs">
+          <div className="min-w-0">
+            <div className="text-xs font-medium text-gray-900 truncate max-w-[100px] xl:max-w-[150px]">
               {order?.product_name || order?.name}
             </div>
-            <div className="text-sm text-gray-500">
-              ID: {order._id?.slice(-8)}
+            <div className="text-[10px] xl:text-xs text-gray-500 truncate">
+              {order._id?.slice(-6)}
             </div>
           </div>
         </div>
       </td>
 
       {/* Customer Info */}
-      <td className="px-6 py-4">
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2 text-sm text-gray-900">
-            <FiMail size={14} className="text-gray-400" />
-            <span className="truncate max-w-xs">{order.email}</span>
+      <td className="px-2 xl:px-4 py-2 xl:py-3">
+        <div className="space-y-0.5 xl:space-y-1">
+          <div className="flex items-center space-x-1 text-xs text-gray-900">
+            <FiMail size={10} className="text-gray-400 flex-shrink-0" />
+            <span className="truncate max-w-[120px] xl:max-w-[180px]">{order.email}</span>
           </div>
           
           {order?.number && (
-            <div className="flex items-center space-x-2 text-sm text-gray-600">
-              <FiPhone size={14} className="text-gray-400" />
-              <span>{order.number}</span>
+            <div className="flex items-center space-x-1 text-xs text-gray-600">
+              <FiPhone size={10} className="text-gray-400 flex-shrink-0" />
+              <span className="truncate">{order.number}</span>
             </div>
           )}
           
           {order?.shipignAddress && (
-            <div className="flex items-center space-x-2 text-sm text-gray-600">
-              <FiMapPin size={14} className="text-gray-400" />
-              <span className="truncate max-w-xs">{order.shipignAddress}</span>
+            <div className="flex items-center space-x-1 text-xs text-gray-600">
+              <FiMapPin size={10} className="text-gray-400 flex-shrink-0" />
+              <span className="truncate max-w-[120px] xl:max-w-[180px]">{order.shipignAddress}</span>
             </div>
           )}
         </div>
       </td>
 
       {/* Price */}
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm font-medium text-gray-900">
+      <td className="px-2 xl:px-4 py-2 xl:py-3 whitespace-nowrap">
+        <div className="text-xs font-medium text-gray-900">
           ${typeof order.price === 'number' ? order.price.toFixed(2) : parseFloat(order.price || 0).toFixed(2)}
         </div>
       </td>
 
       {/* Quantity */}
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">
+      <td className="px-2 xl:px-4 py-2 xl:py-3 whitespace-nowrap">
+        <div className="text-xs text-gray-900 text-center">
           {order.quantity || 0}
         </div>
       </td>
 
       {/* Total Price */}
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm font-semibold text-gray-900">
+      <td className="px-2 xl:px-4 py-2 xl:py-3 whitespace-nowrap">
+        <div className="text-xs font-semibold text-gray-900">
           ${typeof order.totalPrice === 'number' ? order.totalPrice.toFixed(2) : parseFloat(order.totalPrice || 0).toFixed(2)}
         </div>
       </td>
 
       {/* Actions */}
-      <td className="px-6 py-4 whitespace-nowrap text-center">
-        <div className="flex flex-col items-center space-y-2">
+      <td className="px-2 xl:px-4 py-2 xl:py-3 whitespace-nowrap">
+        <div className="flex flex-col items-center space-y-1">
           {getStatusBadge()}
           
           {order.paid && order?.status === "pending" && (
             <button
               onClick={delivered}
-              className="inline-flex items-center space-x-1 px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-lg hover:bg-emerald-600 transition-colors duration-200"
+              className="inline-flex items-center space-x-1 px-2 py-0.5 xl:py-1 bg-emerald-500 text-white text-[10px] xl:text-xs font-medium rounded-lg hover:bg-emerald-600 transition-colors duration-200"
             >
-              <FiTruck size={12} />
+              <FiTruck size={10} />
               <span>Ship</span>
             </button>
           )}

@@ -19,14 +19,14 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { name: "Home", path: "/home", icon: "🏠" },
+    { name: "Home", path: "/home", icon: "", external: false },
     ...(user ? [
-      { name: "Shop", path: "/allProduct", icon: "🛍️" },
-      { name: "Dashboard", path: "/dashboard", icon: "📊" },
-      { name: "Portfolio", path: "/portfolio", icon: "💼" }
+      { name: "Shop", path: "/allProduct", icon: "", external: false },
+      { name: "Dashboard", path: "/dashboard", icon: "", external: false },
+      { name: "Portfolio", path: "https://marouful-islam-zishan-portfolio.vercel.app/", icon: "", external: true }
     ] : []),
-    { name: "Blog", path: "/blog", icon: "📖" },
-    ...(!user ? [{ name: "Login", path: "/login", icon: "🔑" }] : [])
+    { name: "Blog", path: "/blog", icon: "📖", external: false },
+    ...(!user ? [{ name: "Login", path: "/login", icon: "🔑", external: false }] : [])
   ];
 
   const handleLogout = () => {
@@ -61,20 +61,36 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
             {menuItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
-                    isActive
-                      ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-emerald-600'
-                  }`
-                }
-              >
-                <span>{item.icon}</span>
-                <span>{item.name}</span>
-              </NavLink>
+              item.external ? (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-gray-700 hover:bg-gray-100 hover:text-emerald-600"
+                >
+                  <span>{item.icon}</span>
+                  <span>{item.name}</span>
+                  <svg className="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              ) : (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
+                      isActive
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg'
+                        : 'text-gray-700 hover:bg-gray-100 hover:text-emerald-600'
+                    }`
+                  }
+                >
+                  <span>{item.icon}</span>
+                  <span>{item.name}</span>
+                </NavLink>
+              )
             ))}
             
             {user && (
@@ -109,25 +125,42 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div className={`lg:hidden transition-all duration-300 ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden`}>
-          <div className="py-4 space-y-2 bg-white/95 backdrop-blur-lg rounded-2xl mt-4 shadow-xl border border-gray-200/20">
+          <div className="py-4 space-y-2 bg-white/95 backdrop-blur-lg rounded-2xl mt-4 shadow-xl border border-gray-200/20 max-h-[calc(100vh-5rem)] overflow-y-auto">
             {menuItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                onClick={() => setIsMenuOpen(false)}
-                className={({ isActive }) =>
-                  `flex items-center space-x-3 px-6 py-3 text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white mx-4 rounded-xl shadow-lg'
-                      : 'text-gray-700 hover:bg-gray-50 hover:text-emerald-600'
-                  }`
-                }
-              >
-                <span className="text-lg">{item.icon}</span>
-                <span>{item.name}</span>
-              </NavLink>
+              item.external ? (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center space-x-3 px-6 py-3 text-sm font-medium transition-all duration-200 text-gray-700 hover:bg-gray-50 hover:text-emerald-600"
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <span>{item.name}</span>
+                  <svg className="w-4 h-4 ml-auto" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              ) : (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `flex items-center space-x-3 px-6 py-3 text-sm font-medium transition-all duration-200 ${
+                      isActive
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white mx-4 rounded-xl shadow-lg'
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-emerald-600'
+                    }`
+                  }
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <span>{item.name}</span>
+                </NavLink>
+              )
             ))}
             
             {user && (

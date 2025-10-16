@@ -3,26 +3,95 @@ import { useNavigate } from "react-router-dom";
 import { FiChevronRight, FiStar, FiUsers, FiMessageCircle } from "react-icons/fi";
 import Review from "./Review";
 
-const Reviews = () => {
+const Reviews = React.memo(() => {
   const [reviews, setReview] = useState([]);
-  useEffect(() => {
-    fetch("https://autovantis.onrender.com/reviews")
-      .then((res) => res.json())
-      .then((data) => {
-        setReview(data);
-      });
-  }, []);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const averageRating = reviews.length > 0 
-    ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1)
-    : 0;
+  useEffect(() => {
+    // Check cache first
+    const cachedReviews = localStorage.getItem('autovantis_reviews');
+    const cacheTime = localStorage.getItem('autovantis_reviews_time');
+    const now = new Date().getTime();
+    
+    // Use cache if it's less than 10 minutes old
+    if (cachedReviews && cacheTime && (now - parseInt(cacheTime)) < 600000) {
+      setReview(JSON.parse(cachedReviews));
+      setLoading(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+    fetch("https://autovantis.onrender.com/reviews", {
+      signal: controller.signal
+    })
+      .then((res) => {
+        clearTimeout(timeoutId);
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then((data) => {
+        setReview(data);
+        setLoading(false);
+        // Cache the data
+        localStorage.setItem('autovantis_reviews', JSON.stringify(data));
+        localStorage.setItem('autovantis_reviews_time', now.toString());
+      })
+      .catch((err) => {
+        clearTimeout(timeoutId);
+        console.error('Reviews fetch error:', err);
+        setLoading(false);
+        // Use cached data as fallback if available
+        if (cachedReviews) {
+          setReview(JSON.parse(cachedReviews));
+        }
+      });
+
+    return () => {
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
+  }, []);
+
+  // Memoize expensive calculations
+  const { averageRating, formattedAverage } = React.useMemo(() => {
+    const totalRating = reviews.reduce((sum, review) => {
+      const rating = Number(review.rating) || 0;
+      return sum + rating;
+    }, 0);
+    const total = reviews.length;
+    const avg = total > 0 ? totalRating / total : 0;
+    return {
+      averageRating: avg,
+      formattedAverage: avg.toFixed(1)
+    };
+  }, [reviews]);
+
+  // Get latest 3 reviews
+  const latestReviews = React.useMemo(() => 
+    reviews.slice(Math.max(reviews.length - 3, 0)), 
+    [reviews]
+  );
+
+  if (loading) {
+    return (
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-center items-center py-12">
+            <div className="w-8 h-8 border-2 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 px-4 relative">
-      {/* Background Elements */}
-      <div className="absolute top-10 left-10 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl animate-pulse"></div>
-      <div className="absolute bottom-10 right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      {/* Reduced background elements for better performance */}
+      <div className="absolute top-10 left-10 w-16 h-16 bg-emerald-500/8 rounded-full blur-lg"></div>
+      <div className="absolute bottom-10 right-10 w-20 h-20 bg-blue-500/8 rounded-full blur-lg"></div>
       
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -57,7 +126,7 @@ const Reviews = () => {
                   />
                 ))}
               </div>
-              <span className="text-lg font-semibold text-gray-900">{averageRating}</span>
+              <span className="text-lg font-semibold text-gray-900">{formattedAverage}</span>
               <span className="text-gray-600">average rating</span>
             </div>
             
@@ -70,8 +139,8 @@ const Reviews = () => {
 
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {reviews.slice(Math.max(reviews.length - 3, 0)).map((review, index) => (
-            <Review key={index} review={review} />
+          {latestReviews.map((review, index) => (
+            <Review key={review._id || index} review={review} />
           ))}
         </div>
 
@@ -88,6 +157,6 @@ const Reviews = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Reviews;

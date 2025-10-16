@@ -20,6 +20,7 @@ import auth from "../../firebase.init";
 import UseLoading from "../hooks/UseLoading";
 import Loading from "../Shared/Loading";
 import ManageProductRow from "./ManageProductRow";
+import { formatNumber } from "../Shared/monyFormatter";
 
 const ManageProducts = () => {
   const navigate = useNavigate();
@@ -214,7 +215,7 @@ const ManageProducts = () => {
               <FiDollarSign className="text-green-600" size={20} />
             </div>
             <div>
-              <p className="text-xl lg:text-2xl font-bold text-gray-900">${stats.totalValue.toFixed(0)}</p>
+              <p className="text-xl lg:text-2xl font-bold text-gray-900">${formatNumber(stats.totalValue)}</p>
               <p className="text-xs lg:text-sm text-gray-600">Total Value</p>
             </div>
           </div>

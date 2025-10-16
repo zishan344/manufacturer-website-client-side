@@ -16,11 +16,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "About Us", path: "/about" },
+    { name: "About Us", path: "/" },
     { name: "Our Products", path: "/allProduct" },
-    { name: "Contact", path: "/contact" },
+    { name: "Contact", path: "/" },
     { name: "Blog", path: "/blog" },
-    { name: "Portfolio", path: "/portfolio" }
   ];
 
   const services = [

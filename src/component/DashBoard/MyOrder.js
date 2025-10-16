@@ -15,6 +15,7 @@ import auth from "../../firebase.init";
 import UseLoading from "../hooks/UseLoading";
 import Loading from "../Shared/Loading";
 import MyOrderRow from "./MyOrderRow";
+import { formatNumber } from "../Shared/monyFormatter";
 
 const MyOrder = () => {
   const [user, loading, Uerror] = useAuthState(auth);
@@ -59,15 +60,7 @@ const MyOrder = () => {
   }, [orders, searchTerm, filterStatus]);
 
   // Format number with K/M suffixes
-  const formatNumber = (num) => {
-    if (num >= 1000000) {
-      return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
-    }
-    if (num >= 1000) {
-      return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
-    }
-    return num.toString();
-  };
+  
 
   // Statistics
   const stats = useMemo(() => {

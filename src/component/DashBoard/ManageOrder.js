@@ -25,6 +25,7 @@ import auth from "../../firebase.init";
 import UseLoading from "../hooks/UseLoading";
 import Loading from "../Shared/Loading";
 import ManageOrderRow from "./ManageOrderRow";
+import { formatNumber } from "../Shared/monyFormatter";
 
 const ManageOrder = () => {
   const navigate = useNavigate();
@@ -142,51 +143,51 @@ const ManageOrder = () => {
       </div>
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-4 lg:p-6 border border-gray-200/50 shadow-lg">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-              <FiPackage className="text-blue-600" size={20} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+        <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 border border-gray-200/50 shadow-lg">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+              <FiPackage className="text-blue-600" size={16} />
             </div>
-            <div>
-              <p className="text-xl lg:text-2xl font-bold text-gray-900">{stats.total}</p>
-              <p className="text-xs lg:text-sm text-gray-600">Total Orders</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-4 lg:p-6 border border-gray-200/50 shadow-lg">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-              <FiTrendingUp className="text-emerald-600" size={20} />
-            </div>
-            <div>
-              <p className="text-xl lg:text-2xl font-bold text-gray-900">{stats.paid}</p>
-              <p className="text-xs lg:text-sm text-gray-600">Paid Orders</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">{stats.total}</p>
+              <p className="text-xs sm:text-sm text-gray-600">Total Orders</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-4 lg:p-6 border border-gray-200/50 shadow-lg">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-red-100 rounded-xl flex items-center justify-center">
-              <FiUsers className="text-red-600" size={20} />
+        <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 border border-gray-200/50 shadow-lg">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-emerald-100 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+              <FiTrendingUp className="text-emerald-600" size={16} />
             </div>
-            <div>
-              <p className="text-xl lg:text-2xl font-bold text-gray-900">{stats.unpaid}</p>
-              <p className="text-xs lg:text-sm text-gray-600">Unpaid Orders</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">{stats.paid}</p>
+              <p className="text-xs sm:text-sm text-gray-600">Paid Orders</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-4 lg:p-6 border border-gray-200/50 shadow-lg col-span-2 lg:col-span-1">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
-              <FiDollarSign className="text-yellow-600" size={20} />
+        <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 border border-gray-200/50 shadow-lg">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-red-100 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+              <FiUsers className="text-red-600" size={16} />
             </div>
-            <div>
-              <p className="text-xl lg:text-2xl font-bold text-gray-900">${stats.revenue.toFixed(2)}</p>
-              <p className="text-xs lg:text-sm text-gray-600">Total Revenue</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">{stats.unpaid}</p>
+              <p className="text-xs sm:text-sm text-gray-600">Unpaid Orders</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 border border-gray-200/50 shadow-lg">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-yellow-100 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+              <FiDollarSign className="text-yellow-600" size={16} />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">${formatNumber(stats.revenue)}</p>
+              <p className="text-xs sm:text-sm text-gray-600">Total Revenue</p>
             </div>
           </div>
         </div>
@@ -269,74 +270,70 @@ const ManageOrder = () => {
 
       {/* Orders Table */}
       <div className="bg-white/80 backdrop-blur-lg rounded-2xl border border-gray-200/50 shadow-lg overflow-hidden">
-        {/* Desktop Table - Only for xl screens and up */}
-        <div className="hidden xl:block">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50/80">
-                <tr>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    #
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Product
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Customer Info
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Price
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Quantity
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Total
-                  </th>
-                  <th className="px-6 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {filteredOrders.map((order, index) => (
-                  <ManageOrderRow
-                    key={order._id || index}
-                    order={order}
-                    index={index}
-                    refetch={refetch}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Mobile and Tablet Card Layout - For xl screens and below */}
-        <div className="xl:hidden">
-          <div className="space-y-4 p-4">
+        {/* Desktop Table - For large screens and up */}
+        <div className="hidden lg:block overflow-x-auto">
+          <table className="w-full table-auto">
+            <thead className="bg-gray-50/80">
+              <tr>
+                <th className="px-2 xl:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                  #
+                </th>
+                <th className="px-2 xl:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                  Product
+                </th>
+                <th className="px-2 xl:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                  Customer Info
+                </th>
+                <th className="px-2 xl:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                  Price
+                </th>
+                <th className="px-2 xl:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                  Qty
+                </th>
+                <th className="px-2 xl:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                  Total
+                </th>
+                <th className="px-2 xl:px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {filteredOrders.map((order, index) => (
+                <ManageOrderRow
+                  key={order._id || index}
+                  order={order}
+                  index={index}
+                  refetch={refetch}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>        {/* Mobile and Tablet Card Layout - For lg screens and below */}
+        <div className="lg:hidden">
+          <div className="space-y-3 sm:space-y-4 p-3 sm:p-4">
             {filteredOrders.map((order, index) => (
-              <div key={order._id || index} className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+              <div key={order._id || index} className="bg-white rounded-lg sm:rounded-xl shadow-sm border border-gray-200 p-3 sm:p-4">
                 {/* Order Header */}
                 <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-sm font-semibold text-gray-900">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <span className="text-xs sm:text-sm font-semibold text-gray-900">
                       #{(index + 1).toString().padStart(3, '0')}
                     </span>
                     {/* Status Badge */}
                     {!order.paid ? (
                       <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                        <FiAlertCircle className="mr-1" size={10} />
+                        <FiAlertCircle className="mr-1" size={8} />
                         Unpaid
                       </span>
                     ) : order.status === "delivered" ? (
                       <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                        <FiCheck className="mr-1" size={10} />
+                        <FiCheck className="mr-1" size={8} />
                         Delivered
                       </span>
                     ) : (
                       <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                        <FiClock className="mr-1" size={10} />
+                        <FiClock className="mr-1" size={8} />
                         Pending
                       </span>
                     )}
@@ -381,64 +378,64 @@ const ManageOrder = () => {
                         }
                       });
                     }}
-                    className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
+                    className="p-1.5 sm:p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
                   >
-                    <FiTrash2 size={16} />
+                    <FiTrash2 size={14} />
                   </button>
                 </div>
 
                 {/* Product Info */}
-                <div className="flex items-center space-x-3 mb-3">
+                <div className="flex items-center space-x-2 sm:space-x-3 mb-3">
                   <img
                     src={order.image}
                     alt={order?.product_name || order?.name}
-                    className="w-12 h-12 rounded-lg object-cover border border-gray-200"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover border border-gray-200 flex-shrink-0"
                   />
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-medium text-gray-900 truncate">
+                    <h3 className="text-xs sm:text-sm font-medium text-gray-900 truncate">
                       {order?.product_name || order?.name}
                     </h3>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 truncate">
                       ID: {order._id?.slice(-8)}
                     </p>
                   </div>
                 </div>
 
                 {/* Customer Info */}
-                <div className="space-y-2 mb-3">
-                  <div className="flex items-center space-x-2 text-sm">
-                    <FiMail size={12} className="text-gray-400" />
+                <div className="space-y-1.5 sm:space-y-2 mb-3">
+                  <div className="flex items-center space-x-2 text-xs sm:text-sm">
+                    <FiMail size={10} className="text-gray-400 flex-shrink-0" />
                     <span className="text-gray-900 truncate">{order.email}</span>
                   </div>
                   {order?.number && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <FiPhone size={12} className="text-gray-400" />
-                      <span className="text-gray-600">{order.number}</span>
+                    <div className="flex items-center space-x-2 text-xs sm:text-sm">
+                      <FiPhone size={10} className="text-gray-400 flex-shrink-0" />
+                      <span className="text-gray-600 truncate">{order.number}</span>
                     </div>
                   )}
                   {order?.shipignAddress && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <FiMapPin size={12} className="text-gray-400" />
+                    <div className="flex items-center space-x-2 text-xs sm:text-sm">
+                      <FiMapPin size={10} className="text-gray-400 flex-shrink-0" />
                       <span className="text-gray-600 truncate">{order.shipignAddress}</span>
                     </div>
                   )}
                 </div>
 
                 {/* Price Info */}
-                <div className="grid grid-cols-3 gap-4 mb-3 text-sm">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-3 text-xs sm:text-sm">
                   <div>
-                    <p className="text-gray-500">Price</p>
-                    <p className="font-medium text-gray-900">
+                    <p className="text-gray-500 text-xs">Price</p>
+                    <p className="font-medium text-gray-900 truncate">
                       ${typeof order.price === 'number' ? order.price.toFixed(2) : parseFloat(order.price || 0).toFixed(2)}
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-500">Qty</p>
+                    <p className="text-gray-500 text-xs">Qty</p>
                     <p className="font-medium text-gray-900">{order.quantity || 0}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500">Total</p>
-                    <p className="font-semibold text-gray-900">
+                    <p className="text-gray-500 text-xs">Total</p>
+                    <p className="font-semibold text-gray-900 truncate">
                       ${typeof order.totalPrice === 'number' ? order.totalPrice.toFixed(2) : parseFloat(order.totalPrice || 0).toFixed(2)}
                     </p>
                   </div>
@@ -486,9 +483,9 @@ const ManageOrder = () => {
                         }
                       });
                     }}
-                    className="w-full inline-flex items-center justify-center space-x-2 px-4 py-2 bg-emerald-500 text-white text-sm font-medium rounded-lg hover:bg-emerald-600 transition-colors duration-200"
+                    className="w-full inline-flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 bg-emerald-500 text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-emerald-600 transition-colors duration-200"
                   >
-                    <FiTruck size={16} />
+                    <FiTruck size={14} />
                     <span>Mark as Shipped</span>
                   </button>
                 )}

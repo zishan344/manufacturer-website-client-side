@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddProduct from "./component/DashBoard/AddProduct";
@@ -24,14 +24,14 @@ import NotFound from "./component/Shared/NotFound";
 import RequarAuth from "./component/Shared/RequarAuth";
 import RequireAdmin from "./component/Shared/RequireAdmin";
 function App() {
+  const location = useLocation();
+  const isDashboardRoute = location.pathname.startsWith('/dashboard');
+
   return (
     <div className="min-h-screen">
-      {/* --- IGNORE Navbar when path value dashboard--- */}
-      {
-        window.location.pathname.includes("dashboard") ? null : <Navbar />
-      }
-      {/* <Navbar /> */}
-      <main className="pt-16 lg:pt-20">
+      {/* Conditionally render Navbar - hide on dashboard routes */}
+      {!isDashboardRoute && <Navbar />}
+      <main className={isDashboardRoute ? "" : "pt-16 lg:pt-20"}>
         <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
@@ -112,10 +112,8 @@ function App() {
         <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>
-      {
-        window.location.pathname.includes("dashboard") ? null : <Footer />
-      }
-      
+      {/* Conditionally render Footer - hide on dashboard routes */}
+      {!isDashboardRoute && <Footer />}
       <ToastContainer />
     </div>
   );

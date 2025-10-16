@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -21,7 +22,7 @@ const Banner = () => {
           <div className="text-center lg:text-left space-y-8">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm border border-blue-400/30 rounded-full text-blue-300 text-sm font-semibold">
-              🚀 Advanced Auto Technology
+              Advanced Auto Technology
             </div>
             
             {/* Main Headlines */}
@@ -44,7 +45,7 @@ const Banner = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105">
-                <span className="relative z-10">Explore Products</span>
+                <span className="relative z-10"><Link to="/allProduct">Explore Products</Link></span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
               
@@ -92,7 +93,7 @@ const Banner = () => {
                   ⚡ High Performance
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg">
-                  🔧 Premium Quality
+                  Premium Quality
                 </div>
               </div>
             </div>
