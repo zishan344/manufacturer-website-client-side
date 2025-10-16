@@ -25,9 +25,10 @@ import RequarAuth from "./component/Shared/RequarAuth";
 import RequireAdmin from "./component/Shared/RequireAdmin";
 function App() {
   return (
-    <div>
+    <div className="min-h-screen">
       <Navbar />
-      <Routes>
+      <main className="pt-16 lg:pt-20">
+        <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/allProduct" element={<MoreServices />}></Route>
@@ -105,7 +106,8 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="*" element={<NotFound />}></Route>
-      </Routes>
+        </Routes>
+      </main>
       <Footer />
       <ToastContainer />
     </div>
