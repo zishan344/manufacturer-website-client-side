@@ -90,7 +90,7 @@ const Banner = () => {
                 
                 {/* Floating Feature Cards */}
                 <div className="absolute -top-4 -left-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg">
-                  ⚡ High Performance
+                  High Performance
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg">
                   Premium Quality
