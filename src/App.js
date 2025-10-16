@@ -26,7 +26,11 @@ import RequireAdmin from "./component/Shared/RequireAdmin";
 function App() {
   return (
     <div className="min-h-screen">
-      <Navbar />
+      {/* --- IGNORE Navbar when path value dashboard--- */}
+      {
+        window.location.pathname.includes("dashboard") ? null : <Navbar />
+      }
+      {/* <Navbar /> */}
       <main className="pt-16 lg:pt-20">
         <Routes>
         <Route path="/" element={<Home />}></Route>
