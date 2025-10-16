@@ -112,7 +112,10 @@ function App() {
         <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>
-      <Footer />
+      {
+        window.location.pathname.includes("dashboard") ? null : <Footer />
+      }
+      
       <ToastContainer />
     </div>
   );
