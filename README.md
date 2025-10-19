@@ -51,11 +51,21 @@ A smart, stylish, and feature-rich web application for car parts manufacturers a
 ## 🖼️ Screenshot
 ![App Screenshot](./public/ss1.png)
 #
-![App Screenshot](./public/ss2.png)
+![App Screenshot](./public/Screenshot_5.png)
 #
-![App Screenshot](./public/ss3.png)
+![App Screenshot](./public/Screenshot_26.png)
 #
-![App Screenshot](./public/ss4.png)
+![App Screenshot](./public/Screenshot_1.png)
+#
+![App Screenshot](./public/Screenshot_2.png)
+#
+![App Screenshot](./public/Screenshot_3.png)
+#
+![App Screenshot](./public/Screenshot_4.png)
+#
+![App Screenshot](./public/Screenshot_6.png)
+#
+![App Screenshot](./public/Screenshot_7.png)
 
 ## 📋 How to Run Locally
 1. Clone the repo:
